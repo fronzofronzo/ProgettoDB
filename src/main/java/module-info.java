@@ -6,4 +6,5 @@ module it.unibo.databaseplatform {
 
     opens it.unibo.databaseplatform to javafx.fxml;
     exports it.unibo.databaseplatform;
+    exports it.unibo.databaseplatform.controllerFX to javafx.fxml;
 }

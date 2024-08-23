@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="it.unibo.databaseplatform.StartScreen"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="459.0" prefWidth="671.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.databaseplatform.controllerFX.StartScreenFXController">
+   <children>
+      <Label layoutX="112.0" layoutY="97.0" styleClass="header" stylesheets="@style.css" text="RISTORANTE DA ANDREA" textAlignment="CENTER">
+         <font>
+            <Font name="Arial Bold" size="32.0" />
+         </font>
+      </Label>
+      <Button fx:id="userButton" layoutX="102.0" layoutY="229.0" mnemonicParsing="false" styleClass="normal" text="Accesso utente" />
+      <Button fx:id="adminButton" layoutX="401.0" layoutY="229.0" mnemonicParsing="false" styleClass="normal" text="Accesso Amministratore" />
+   </children>
 </AnchorPane>
