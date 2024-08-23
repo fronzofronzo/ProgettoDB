@@ -1,0 +1,10 @@
+.header{
+    -fx-font-size: 35px;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+}
+
+.normal{
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+}
