@@ -2,6 +2,7 @@ package it.unibo.databaseplatform;
 
 import it.unibo.databaseplatform.controller.Controller;
 import it.unibo.databaseplatform.controller.ControllerImpl;
+import it.unibo.databaseplatform.data.DAOUtils;
 import it.unibo.databaseplatform.model.Model;
 import it.unibo.databaseplatform.model.ModelImpl;
 import it.unibo.databaseplatform.view.View;
@@ -19,7 +20,8 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         final View view = new ViewImpl(stage);
-        final Model model = new ModelImpl();
+        var connection = DAOUtils.localMySQLConnection("ristorante", "root", "miciaminu");
+        final Model model = new ModelImpl(connection);
         final Controller controller = new ControllerImpl(model, view);
         view.setController(controller);
         stage.show();
