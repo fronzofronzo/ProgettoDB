@@ -5,7 +5,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="459.0" prefWidth="671.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.databaseplatform.controllerFX.StartScreenFXController">
    <children>
       <Label layoutX="112.0" layoutY="97.0" styleClass="header" stylesheets="@style.css" text="RISTORANTE DA ANDREA" textAlignment="CENTER">
@@ -13,7 +12,7 @@
             <Font name="Arial Bold" size="32.0" />
          </font>
       </Label>
-      <Button fx:id="userButton" layoutX="102.0" layoutY="229.0" mnemonicParsing="false" styleClass="normal" text="Accesso utente" />
+      <Button fx:id="userButton" layoutX="102.0" layoutY="229.0" mnemonicParsing="false" onAction="#showDishes" styleClass="normal" text="Accesso utente" />
       <Button fx:id="adminButton" layoutX="401.0" layoutY="229.0" mnemonicParsing="false" styleClass="normal" text="Accesso Amministratore" />
    </children>
 </AnchorPane>

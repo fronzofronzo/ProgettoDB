@@ -7,4 +7,8 @@ public interface View {
     void startView();
 
     void setController(final Controller controller);
+
+    void showDishes();
+
+    Controller getController();
 }
