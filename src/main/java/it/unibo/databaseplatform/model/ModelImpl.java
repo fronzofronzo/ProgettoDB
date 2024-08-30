@@ -1,5 +1,6 @@
 package it.unibo.databaseplatform.model;
 
+import it.unibo.databaseplatform.data.Client;
 import it.unibo.databaseplatform.data.Piatto;
 
 import java.sql.Connection;
@@ -21,6 +22,6 @@ public class ModelImpl implements Model{
 
     @Override
     public boolean userAccess(String code, String password) {
-        return false;
+        return Client.DAO.getFromCode(this.connection, code ,password) != null;
     }
 }

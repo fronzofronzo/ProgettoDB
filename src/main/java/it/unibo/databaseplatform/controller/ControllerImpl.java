@@ -23,6 +23,6 @@ public class ControllerImpl implements Controller{
 
     @Override
     public boolean userAccess(String userCode, String password) {
-        return false;
+        return this.model.userAccess(userCode,password);
     }
 }
