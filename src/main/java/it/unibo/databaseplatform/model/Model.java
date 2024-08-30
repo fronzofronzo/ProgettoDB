@@ -7,4 +7,6 @@ import java.util.List;
 public interface Model {
 
     List<Piatto> getDishes();
+
+    boolean userAccess(String code, String password);
 }

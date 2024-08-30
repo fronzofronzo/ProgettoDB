@@ -20,4 +20,9 @@ public class ControllerImpl implements Controller{
     public List<Piatto> getDishesList() {
         return this.model.getDishes();
     }
+
+    @Override
+    public boolean userAccess(String userCode, String password) {
+        return false;
+    }
 }

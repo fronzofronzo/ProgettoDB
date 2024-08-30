@@ -12,7 +12,7 @@
             <Font name="Arial Bold" size="32.0" />
          </font>
       </Label>
-      <Button fx:id="userButton" layoutX="102.0" layoutY="229.0" mnemonicParsing="false" onAction="#showDishes" styleClass="normal" text="Accesso utente" />
+      <Button fx:id="userButton" layoutX="102.0" layoutY="229.0" mnemonicParsing="false" onAction="#setUserView" styleClass="normal" text="Accesso utente" />
       <Button fx:id="adminButton" layoutX="401.0" layoutY="229.0" mnemonicParsing="false" styleClass="normal" text="Accesso Amministratore" />
    </children>
 </AnchorPane>

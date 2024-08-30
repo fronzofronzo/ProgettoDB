@@ -18,4 +18,9 @@ public class ModelImpl implements Model{
     public List<Piatto> getDishes(){
         return Piatto.DAO.getPiatti(this.connection);
     }
+
+    @Override
+    public boolean userAccess(String code, String password) {
+        return false;
+    }
 }

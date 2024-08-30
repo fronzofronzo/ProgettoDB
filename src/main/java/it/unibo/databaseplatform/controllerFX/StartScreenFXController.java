@@ -4,6 +4,9 @@ import it.unibo.databaseplatform.view.View;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
+import java.io.IOException;
+
+
 public class StartScreenFXController implements FXController{
 
     @FXML
@@ -11,12 +14,16 @@ public class StartScreenFXController implements FXController{
     private View view;
 
     @Override
-    public void setView(View view) {
+    public void setView(final View view) {
         this.view = view;
     }
 
     @FXML
-    public void showDishes() {
-        this.view.showDishes();
+    public void setUserView() {
+        try {
+            this.view.setScene("accesso-utente");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

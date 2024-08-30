@@ -17,12 +17,8 @@ public class ViewImpl implements View{
 
     public ViewImpl(final Stage stage) throws IOException {
         this.stage = stage;
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("start-screen.fxml"));
-        final Parent root = fxmlLoader.load();
-        ((FXController)fxmlLoader.getController()).setView(this);
-        Scene scene = new Scene(root);
+        this.setScene("start-screen");
         stage.setTitle("Piattaforma ristorante");
-        stage.setScene(scene);
     }
 
     @Override
@@ -47,5 +43,16 @@ public class ViewImpl implements View{
     @Override
     public Controller getController() {
         return this.controller;
+    }
+
+    @Override
+    public void setScene(String scene) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(scene + ".fxml"));
+        final Parent root = fxmlLoader.load();
+        ((FXController)fxmlLoader.getController()).setView(this);
+        Scene sceneToLoad = new Scene(root);
+        stage.setTitle("Piattaforma ristorante");
+        stage.setScene(sceneToLoad);
+        stage.show();
     }
 }
