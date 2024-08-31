@@ -14,3 +14,10 @@
     -fx-pref-height: 460;
     -fx-pref-width: 670;
 }
+
+.formatHBOX{
+    -fx-spacing: 100;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}

@@ -32,4 +32,10 @@ public class Queries {
             where co.CodicePiatto = ?
             and co.CodiceAllergene = a.CodiceAllergene
             """;
+
+    public static final String GET_BEVERAGES =
+            """
+            select *
+            from bevande b
+            """;
 }

@@ -1,5 +1,6 @@
 package it.unibo.databaseplatform.controller;
 
+import it.unibo.databaseplatform.data.Beverage;
 import it.unibo.databaseplatform.data.Piatto;
 import it.unibo.databaseplatform.model.Model;
 import it.unibo.databaseplatform.view.View;
@@ -24,5 +25,10 @@ public class ControllerImpl implements Controller{
     @Override
     public boolean userAccess(String userCode, String password) {
         return this.model.userAccess(userCode,password);
+    }
+
+    @Override
+    public List<Beverage> getBeveragesList() {
+        return this.model.getBeverages();
     }
 }

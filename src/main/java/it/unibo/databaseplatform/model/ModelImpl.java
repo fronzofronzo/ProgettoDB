@@ -1,5 +1,6 @@
 package it.unibo.databaseplatform.model;
 
+import it.unibo.databaseplatform.data.Beverage;
 import it.unibo.databaseplatform.data.Client;
 import it.unibo.databaseplatform.data.Piatto;
 
@@ -10,6 +11,7 @@ import java.util.Objects;
 public class ModelImpl implements Model{
 
     private final Connection connection;
+    private Client actualClient;
 
     public ModelImpl(Connection connection) {
         Objects.requireNonNull(connection, "Model created with null connection");
@@ -22,6 +24,12 @@ public class ModelImpl implements Model{
 
     @Override
     public boolean userAccess(String code, String password) {
-        return Client.DAO.getFromCode(this.connection, code ,password) != null;
+        actualClient = Client.DAO.getFromCode(this.connection, code ,password);
+        return  actualClient != null;
+    }
+
+    @Override
+    public List<Beverage> getBeverages() {
+        return Beverage.DAO.getBeverages(this.connection);
     }
 }
