@@ -27,6 +27,8 @@ public class MakeOrderViewFXController implements FXController{
     @FXML
     private GridPane centralPane;
 
+    @FXML
+    private Button controlButton;
 
     @Override
     public void setView(final View view) {
@@ -35,6 +37,7 @@ public class MakeOrderViewFXController implements FXController{
     }
 
     private void initialize() {
+        this.centralPane.getChildren().removeAll(this.centralPane.getChildren());
         dishes.addAll(this.view.getController().getDishesList());
         beverages.addAll(this.view.getController().getBeveragesList());
         centralPane.add(new Label("Nome"), 0 , 0);
@@ -74,6 +77,29 @@ public class MakeOrderViewFXController implements FXController{
             this.view.setScene("user-view");
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    public void showOrderDetails() {
+        controlButton.setText("Aggiungi all'ordine");
+        controlButton.setOnAction(event -> {
+            this.initialize();
+        });
+        centralPane.getChildren().removeAll(centralPane.getChildren());
+        centralPane.add(new Label("Nome"), 0 , 0);
+        centralPane.add(new Label("Prezzo"), 1 , 0);
+        centralPane.add(new Label(""), 2 , 0);
+        for(int i = 0; i < this.order.getDishesInOrder().size(); i++) {
+            var d = this.order.getDishesInOrder().get(i);
+            centralPane.add(new Label(d.getNomePiatto()), 0, i+1);
+            centralPane.add(new Label(String.valueOf(d.getPrezzoPorzione())), 1, i+1);
+            var button = new Button("Rimuovi");
+            selectDishes.put(button, d);
+            button.setOnAction( e -> {
+                order.removeDishFromOrder(selectDishes.get((Button)e.getSource()));
+            });
+            centralPane.add(button, 2, i+1 );
         }
     }
 

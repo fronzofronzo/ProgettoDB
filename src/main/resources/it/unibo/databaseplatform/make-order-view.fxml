@@ -11,7 +11,7 @@
    <children>
       <HBox alignment="CENTER" layoutY="509.0" prefHeight="39.0" prefWidth="741.0">
          <children>
-            <Button mnemonicParsing="false" styleClass="normal" stylesheets="@style.css" text="Riepilogo" textAlignment="CENTER" />
+            <Button fx:id="controlButton" mnemonicParsing="false" onAction="#showOrderDetails" styleClass="normal" stylesheets="@style.css" text="Riepilogo" textAlignment="CENTER" />
             <Button mnemonicParsing="false" onAction="#backToMenu" styleClass="normal" stylesheets="@style.css" text="Torna al menu" />
          </children>
       </HBox>

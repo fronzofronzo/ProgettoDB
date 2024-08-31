@@ -16,8 +16,20 @@ public class Order {
         beveragesOrdered.add(beverage);
     }
 
-    public List<String> getDishesInOrder() {
-        return this.dishesOrdered.stream().map(Piatto::getNomePiatto).toList();
+    public List<Piatto> getDishesInOrder() {
+        return List.copyOf(this.dishesOrdered);
+    }
+
+    public List<Beverage> getBeveragesInOrder() {
+        return List.copyOf(this.beveragesOrdered);
+    }
+
+    public void removeDishFromOrder(final Piatto dish) {
+        this.dishesOrdered.remove(dish);
+    }
+
+    public void removeBeverageFromOrder(final Beverage beverage) {
+        this.beveragesOrdered.remove(beverage);
     }
 
 
