@@ -1,6 +1,7 @@
 package it.unibo.databaseplatform.controller;
 
 import it.unibo.databaseplatform.data.Beverage;
+import it.unibo.databaseplatform.data.Order;
 import it.unibo.databaseplatform.data.Piatto;
 import it.unibo.databaseplatform.model.Model;
 import it.unibo.databaseplatform.view.View;
@@ -30,5 +31,10 @@ public class ControllerImpl implements Controller{
     @Override
     public List<Beverage> getBeveragesList() {
         return this.model.getBeverages();
+    }
+
+    @Override
+    public void sendOrder(final Order order) {
+        this.model.registerOrder(order);
     }
 }

@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="556.0" prefWidth="741.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.databaseplatform.controllerFX.MakeOrderViewFXController">
    <children>
-      <HBox alignment="CENTER" layoutY="509.0" prefHeight="39.0" prefWidth="741.0">
+      <HBox fx:id="buttonContainer" alignment="CENTER" layoutY="509.0" prefHeight="39.0" prefWidth="741.0" stylesheets="@style.css">
          <children>
             <Button fx:id="controlButton" mnemonicParsing="false" onAction="#showOrderDetails" styleClass="normal" stylesheets="@style.css" text="Riepilogo" textAlignment="CENTER" />
             <Button mnemonicParsing="false" onAction="#backToMenu" styleClass="normal" stylesheets="@style.css" text="Torna al menu" />

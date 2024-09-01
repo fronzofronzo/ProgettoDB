@@ -38,4 +38,28 @@ public class Queries {
             select *
             from bevande b
             """;
+
+    public static final String GET_ORDERS_CODES =
+            """
+            select o.CodiceOrdine
+            from ordini o
+            """;
+
+    public static final String INSERT_ORDER =
+            """
+            insert into ordini
+            values ( ?, NULL, ?, CURTIME(), CURDATE(), ?)
+            """;
+
+    public static final String INSERT_DISHES_ORDER =
+            """
+            insert into include_piatti
+            values ( ?, ?, ?)
+            """;
+
+    public static final String INSERT_BEVERAGES_ORDER =
+            """
+            insert into include_bevande
+            values ( ?, ?, ?)
+            """;
 }

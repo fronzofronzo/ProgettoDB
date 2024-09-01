@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -30,16 +31,23 @@ public class MakeOrderViewFXController implements FXController{
     @FXML
     private Button controlButton;
 
+    @FXML
+    private HBox buttonContainer;
+
     @Override
     public void setView(final View view) {
         this.view = view;
+        dishes.addAll(this.view.getController().getDishesList());
+        beverages.addAll(this.view.getController().getBeveragesList());
         this.initialize();
     }
 
     private void initialize() {
+        this.controlButton.setText("Riepilogo");
         this.centralPane.getChildren().removeAll(this.centralPane.getChildren());
-        dishes.addAll(this.view.getController().getDishesList());
-        beverages.addAll(this.view.getController().getBeveragesList());
+        this.controlButton.setOnAction( e -> {
+            this.showOrderDetails();
+        });
         centralPane.add(new Label("Nome"), 0 , 0);
         centralPane.add(new Label("Prezzo"), 1 , 0);
         centralPane.add(new Label(""), 2 , 0);
@@ -82,9 +90,16 @@ public class MakeOrderViewFXController implements FXController{
 
     @FXML
     public void showOrderDetails() {
+        var makeOrderButton = new Button("Invia ordine");
+        makeOrderButton.getStyleClass().add("normal");
+        makeOrderButton.setOnAction( e -> {
+            this.sendOrder();
+        });
+        buttonContainer.getChildren().add(makeOrderButton);
         controlButton.setText("Aggiungi all'ordine");
         controlButton.setOnAction(event -> {
             this.initialize();
+            buttonContainer.getChildren().remove(makeOrderButton);
         });
         centralPane.getChildren().removeAll(centralPane.getChildren());
         centralPane.add(new Label("Nome"), 0 , 0);
@@ -92,15 +107,22 @@ public class MakeOrderViewFXController implements FXController{
         centralPane.add(new Label(""), 2 , 0);
         for(int i = 0; i < this.order.getDishesInOrder().size(); i++) {
             var d = this.order.getDishesInOrder().get(i);
-            centralPane.add(new Label(d.getNomePiatto()), 0, i+1);
-            centralPane.add(new Label(String.valueOf(d.getPrezzoPorzione())), 1, i+1);
+            var nameLabel = new Label(d.getNomePiatto());
+            centralPane.add((nameLabel), 0, i+1);
+            var priceLabel = new Label(String.valueOf(d.getPrezzoPorzione()));
+            centralPane.add((priceLabel), 1, i+1);
             var button = new Button("Rimuovi");
             selectDishes.put(button, d);
             button.setOnAction( e -> {
                 order.removeDishFromOrder(selectDishes.get((Button)e.getSource()));
+                centralPane.getChildren().removeAll(nameLabel,priceLabel,button);
             });
             centralPane.add(button, 2, i+1 );
         }
+    }
+
+    private void sendOrder() {
+        this.view.getController().sendOrder(this.order);
     }
 
 }

@@ -2,6 +2,7 @@ package it.unibo.databaseplatform.model;
 
 import it.unibo.databaseplatform.data.Beverage;
 import it.unibo.databaseplatform.data.Client;
+import it.unibo.databaseplatform.data.Order;
 import it.unibo.databaseplatform.data.Piatto;
 
 import java.sql.Connection;
@@ -31,5 +32,10 @@ public class ModelImpl implements Model{
     @Override
     public List<Beverage> getBeverages() {
         return Beverage.DAO.getBeverages(this.connection);
+    }
+
+    @Override
+    public void registerOrder(final Order order) {
+        Order.DAO.saveOrder(this.connection, this.actualClient, order);
     }
 }
