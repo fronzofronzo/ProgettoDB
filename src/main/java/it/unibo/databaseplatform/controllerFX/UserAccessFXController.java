@@ -2,6 +2,7 @@ package it.unibo.databaseplatform.controllerFX;
 
 import it.unibo.databaseplatform.view.View;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -16,6 +17,7 @@ public class UserAccessFXController implements FXController{
     private TextField userPassword;
     @FXML
     private Label userLabel;
+
 
     @Override
     public void setView(View view) {
@@ -34,6 +36,15 @@ public class UserAccessFXController implements FXController{
             }
         } else {
             this.userLabel.setText("Utente non trovato");
+        }
+    }
+
+    @FXML
+    public void setSignUpScene() {
+        try {
+            this.view.setScene("user-signup");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 

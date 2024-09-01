@@ -1,5 +1,6 @@
 package it.unibo.databaseplatform.controller;
 
+import it.unibo.databaseplatform.data.Address;
 import it.unibo.databaseplatform.data.Beverage;
 import it.unibo.databaseplatform.data.Order;
 import it.unibo.databaseplatform.data.Piatto;
@@ -36,5 +37,10 @@ public class ControllerImpl implements Controller{
     @Override
     public void sendOrder(final Order order) {
         this.model.registerOrder(order);
+    }
+
+    @Override
+    public String registerClient(Address address, String name, String surname, String phoneNumber, String email, String password) {
+        return this.model.registerClient(address, name,surname,phoneNumber,email,password);
     }
 }

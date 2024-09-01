@@ -1,5 +1,6 @@
 package it.unibo.databaseplatform.model;
 
+import it.unibo.databaseplatform.data.Address;
 import it.unibo.databaseplatform.data.Beverage;
 import it.unibo.databaseplatform.data.Order;
 import it.unibo.databaseplatform.data.Piatto;
@@ -15,4 +16,6 @@ public interface Model {
     List<Beverage> getBeverages();
 
     void registerOrder(final Order order);
+
+    String registerClient(Address address, String name, String surname, String phoneNumber, String email, String password);
 }

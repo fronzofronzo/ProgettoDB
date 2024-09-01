@@ -62,4 +62,40 @@ public class Queries {
             insert into include_bevande
             values ( ?, ?, ?)
             """;
+
+    public static final String GET_CARDS_NUMBER =
+            """
+                   select cf.NumeroCarta
+                   from carte_fedelta cf
+            """;
+
+    public static final String INSERT_CARD =
+            """
+            insert into carte_fedelta
+            values ( ? , 0 )
+            """;
+
+    public static final String GET_ALL_CLIENTS_CODE =
+            """
+            select c.CodiceCliente
+            from clienti c
+            """;
+
+    public static final String INSERT_CLIENT =
+            """
+            insert into clienti
+            values ( ? , ?, ?, ? ,? , ?, ?)
+            """;
+
+    public static final String GET_ALL_ADDRESSES_CODE =
+            """
+            select i.CodiceIndirizzo
+            from indirizzi i
+            """;
+
+    public static final String INSERT_ADDRESS =
+            """
+            insert into indirizzi
+            values ( ? , ?, ?, ? ,? , ?)
+            """;
 }

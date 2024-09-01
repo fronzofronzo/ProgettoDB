@@ -8,7 +8,7 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="formatWindow" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.databaseplatform.controllerFX.UserAccessFXController">
    <children>
       <Label layoutX="174.0" layoutY="52.0" styleClass="header" stylesheets="@style.css" text="ACCESSO UTENTE" />
-      <Button fx:id="signUp" layoutX="294.0" layoutY="396.0" mnemonicParsing="false" styleClass="normal" stylesheets="@style.css" text="Registrati" />
+      <Button fx:id="signUp" layoutX="294.0" layoutY="396.0" mnemonicParsing="false" onAction="#setSignUpScene" styleClass="normal" stylesheets="@style.css" text="Registrati" />
       <Button fx:id="singIn" layoutX="303.0" layoutY="350.0" mnemonicParsing="false" onAction="#tryUserAccess" styleClass="normal" stylesheets="@style.css" text="Accedi" />
       <TextField fx:id="userCode" layoutX="260.0" layoutY="190.0" />
       <TextField fx:id="userPassword" layoutX="261.0" layoutY="279.0" />
