@@ -1,5 +1,7 @@
 package it.unibo.databaseplatform.data;
 
+import it.unibo.databaseplatform.utilities.Pair;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -97,6 +99,22 @@ public class Order {
                         throw new DAOException(e);
                     }
                 }
+            }
+        }
+
+        public static List<Pair<String, Integer>> getMostOrderedDishes(final Connection connection) {
+            final List<Pair<String, Integer>> dishes = new ArrayList<>();
+            try(
+                    final var statement = DAOUtils.prepare(connection, Queries.GET_MOST_ORDERED_DISHES);
+                    final var resultSet = statement.executeQuery();
+                    ){
+                while(resultSet.next()) {
+                    final Pair<String, Integer> pair = new Pair<>(resultSet.getString(1), resultSet.getInt(2));
+                    dishes.add(pair);
+                }
+                return List.copyOf(dishes);
+            } catch (Exception e) {
+                throw new DAOException(e);
             }
         }
     }

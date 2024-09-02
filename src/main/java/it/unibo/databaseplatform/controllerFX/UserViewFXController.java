@@ -36,4 +36,13 @@ public class UserViewFXController implements  FXController{
             throw new RuntimeException(e);
         }
     }
+
+    @FXML
+    public void showMostOrderedDishes() {
+        try {
+            this.view.setScene("most-ordered-dishes");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

@@ -1,6 +1,7 @@
 package it.unibo.databaseplatform.model;
 
 import it.unibo.databaseplatform.data.*;
+import it.unibo.databaseplatform.utilities.Pair;
 
 import java.sql.Connection;
 import java.util.List;
@@ -39,5 +40,10 @@ public class ModelImpl implements Model{
     @Override
     public String registerClient(Address address, String name, String surname, String phoneNumber, String email, String password) {
         return Client.DAO.addClient(this.connection, name, surname,phoneNumber,email,password,address);
+    }
+
+    @Override
+    public List<Pair<String, Integer>> getMostOrderedDishes() {
+        return Order.DAO.getMostOrderedDishes(this.connection);
     }
 }

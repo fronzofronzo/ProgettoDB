@@ -98,4 +98,14 @@ public class Queries {
             insert into indirizzi
             values ( ? , ?, ?, ? ,? , ?)
             """;
+
+    public static final String GET_MOST_ORDERED_DISHES =
+            """
+            select p.NomePiatto, sum(ip.Quantità) as NumeroOrdini
+            from ordini o, include_piatti ip, piatti p
+            where o.CodiceOrdine = ip.CodiceOrdine
+            and p.CodicePiatto = ip.CodicePiatto
+            group by p.CodicePiatto, p.NomePiatto
+            order by sum(ip.Quantità) desc
+            """;
 }

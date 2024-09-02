@@ -5,6 +5,7 @@ import it.unibo.databaseplatform.data.Beverage;
 import it.unibo.databaseplatform.data.Order;
 import it.unibo.databaseplatform.data.Piatto;
 import it.unibo.databaseplatform.model.Model;
+import it.unibo.databaseplatform.utilities.Pair;
 import it.unibo.databaseplatform.view.View;
 
 import java.util.List;
@@ -40,7 +41,15 @@ public class ControllerImpl implements Controller{
     }
 
     @Override
-    public String registerClient(Address address, String name, String surname, String phoneNumber, String email, String password) {
+    public String registerClient(Address address, String name, String surname,
+                                 String phoneNumber, String email, String password) {
         return this.model.registerClient(address, name,surname,phoneNumber,email,password);
     }
+
+    @Override
+    public List<Pair<String, Integer>> mostOrderedDishes() {
+        return this.model.getMostOrderedDishes();
+    }
+
+
 }

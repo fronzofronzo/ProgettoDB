@@ -12,6 +12,7 @@
          <children>
             <Button fx:id="showMenu" mnemonicParsing="false" onAction="#showMenuScene" styleClass="normal" stylesheets="@style.css" text="Visualizza menù" />
             <Button fx:id="orderButton" mnemonicParsing="false" onAction="#showOrderMaking" styleClass="normal" stylesheets="@style.css" text="Ordina" />
+            <Button fx:id="mostOrderedButton" mnemonicParsing="false" onAction="#showMostOrderedDishes" styleClass="normal" text="Visualizza piatti più ordinati" />
          </children>
       </VBox>
    </children>

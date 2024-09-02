@@ -4,6 +4,7 @@ import it.unibo.databaseplatform.data.Address;
 import it.unibo.databaseplatform.data.Beverage;
 import it.unibo.databaseplatform.data.Order;
 import it.unibo.databaseplatform.data.Piatto;
+import it.unibo.databaseplatform.utilities.Pair;
 
 import java.util.List;
 
@@ -17,5 +18,8 @@ public interface Model {
 
     void registerOrder(final Order order);
 
-    String registerClient(Address address, String name, String surname, String phoneNumber, String email, String password);
+    String registerClient(Address address, String name, String surname,
+                          String phoneNumber, String email, String password);
+
+    List<Pair<String,Integer>> getMostOrderedDishes();
 }

@@ -4,6 +4,7 @@ import it.unibo.databaseplatform.data.Address;
 import it.unibo.databaseplatform.data.Beverage;
 import it.unibo.databaseplatform.data.Order;
 import it.unibo.databaseplatform.data.Piatto;
+import it.unibo.databaseplatform.utilities.Pair;
 
 import java.util.List;
 
@@ -19,4 +20,6 @@ public interface Controller {
 
     String registerClient(final Address address, final String name, final String surname,
                           final String phoneNumber, final String email, final String password);
+
+    List<Pair<String, Integer>> mostOrderedDishes();
 }
