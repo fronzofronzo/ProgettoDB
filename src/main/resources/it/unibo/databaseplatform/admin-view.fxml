@@ -12,7 +12,7 @@
       <VBox layoutX="24.0" layoutY="75.0" prefHeight="367.0" prefWidth="612.0" spacing="15.0">
          <children>
             <Button mnemonicParsing="false" onAction="#showOrdersStats" styleClass="normal" text="Visualizza statistiche ordini" />
-            <Button mnemonicParsing="false" styleClass="normal" text="Aggiungi punti fedeltà ad un cliente" />
+            <Button mnemonicParsing="false" onAction="#addPointsToCard" styleClass="normal" text="Aggiungi punti fedeltà ad un cliente" />
          </children>
       </VBox>
    </children>

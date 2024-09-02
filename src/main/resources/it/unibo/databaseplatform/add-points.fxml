@@ -19,9 +19,10 @@
          <children>
             <Label styleClass="normal" text="Numero punti" />
             <TextField fx:id="pointsField" />
-            <Button mnemonicParsing="false" styleClass="normal" text="Aggiungi" />
+            <Button mnemonicParsing="false" onAction="#addPoints" styleClass="normal" text="Aggiungi" />
+            <Button mnemonicParsing="false" onAction="#backHome" styleClass="normal" text="Home" />
          </children>
       </VBox>
-      <Label fx:id="textLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="387.0" layoutY="241.0" prefHeight="212.0" prefWidth="278.0" />
+      <Label fx:id="textLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="387.0" layoutY="241.0" prefHeight="212.0" prefWidth="278.0" styleClass="normal" />
    </children>
 </AnchorPane>
