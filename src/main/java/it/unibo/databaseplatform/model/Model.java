@@ -22,4 +22,18 @@ public interface Model {
                           String phoneNumber, String email, String password);
 
     List<Pair<String,Integer>> getMostOrderedDishes();
+
+    boolean adminAccess(String code, String password);
+
+    float getAverageOrderPrice();
+
+    /**
+     * Method to get the number of orders for lunch and dinner
+     * @return {@link Pair} where the first parameter is the number
+     * of orders of lunch and the second is the number of orders of
+     * dinner.
+     */
+    Pair<Integer, Integer> getOrdersNumberByHour();
+
+    boolean addPoints(final int cardNumber, final int points);
 }

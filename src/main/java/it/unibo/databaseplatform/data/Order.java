@@ -117,6 +117,42 @@ public class Order {
                 throw new DAOException(e);
             }
         }
+
+        public static float getAveragePrice(final Connection connection) {
+            try(
+                    final var statement = DAOUtils.prepare(connection, Queries.AVG_PRICE);
+                    final var resultSet = statement.executeQuery();
+                    ){
+                resultSet.next();
+                return resultSet.getFloat(1);
+            } catch (Exception e) {
+                throw new DAOException(e);
+            }
+        }
+
+        public static int getOrdersLunch(final Connection connection) {
+            try(
+                    final var statement = DAOUtils.prepare(connection, Queries.ORDERS_LUNCH);
+                    final var resultSet = statement.executeQuery();
+            ){
+                resultSet.next();
+                return resultSet.getInt(1);
+            } catch (Exception e) {
+                throw new DAOException(e);
+            }
+        }
+
+        public static int getOrdersDinner(final Connection connection) {
+            try(
+                    final var statement = DAOUtils.prepare(connection, Queries.ORDERS_DINNER);
+                    final var resultSet = statement.executeQuery();
+            ){
+                resultSet.next();
+                return resultSet.getInt(1);
+            } catch (Exception e) {
+                throw new DAOException(e);
+            }
+        }
     }
 
     private static String generateCode() {

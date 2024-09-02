@@ -2,33 +2,31 @@ package it.unibo.databaseplatform.controllerFX;
 
 import it.unibo.databaseplatform.view.View;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 
 import java.io.IOException;
 
-
-public class StartScreenFXController implements FXController{
+public class AdminViewFXController implements FXController{
 
     private View view;
 
     @Override
-    public void setView(final View view) {
+    public void setView(View view) {
         this.view = view;
     }
 
     @FXML
-    public void setUserView() {
+    public void showOrdersStats() {
         try {
-            this.view.setScene("accesso-utente");
+            this.view.setScene("orders-stats");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
     @FXML
-    public void setAdminView() {
+    public void addPointsToCard() {
         try {
-            this.view.setScene("admin-sign-in");
+            this.view.setScene("add-points");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

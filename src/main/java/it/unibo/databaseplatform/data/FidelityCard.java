@@ -30,5 +30,14 @@ public class FidelityCard {
                throw new DAOException(e);
            }
         }
+
+        public static void addPointsToCard(final Connection connection, final int cardNumber, final int points) {
+            try{
+                final var statement = DAOUtils.prepare(connection, Queries.ADD_POINTS_TO_CARD, points, cardNumber);
+                statement.execute();
+            } catch (Exception e) {
+                throw new DAOException(e);
+            }
+        }
     }
 }

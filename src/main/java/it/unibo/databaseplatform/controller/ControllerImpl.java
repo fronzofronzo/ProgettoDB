@@ -51,5 +51,25 @@ public class ControllerImpl implements Controller{
         return this.model.getMostOrderedDishes();
     }
 
+    @Override
+    public boolean adminAccess(String adminCode, String password) {
+        return this.model.adminAccess(adminCode, password);
+    }
+
+    @Override
+    public float getAveragePrice() {
+        return this.model.getAverageOrderPrice();
+    }
+
+    @Override
+    public Pair<Integer, Integer> getOrdersByHour() {
+        return this.model.getOrdersNumberByHour();
+    }
+
+    @Override
+    public boolean addPoints(int cardNumber, int points) {
+        return this.model.addPoints(cardNumber, points);
+    }
+
 
 }

@@ -4,6 +4,7 @@ import it.unibo.databaseplatform.view.View;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -14,7 +15,7 @@ public class UserAccessFXController implements FXController{
     @FXML
     private TextField userCode;
     @FXML
-    private TextField userPassword;
+    private PasswordField userPassword;
     @FXML
     private Label userLabel;
 

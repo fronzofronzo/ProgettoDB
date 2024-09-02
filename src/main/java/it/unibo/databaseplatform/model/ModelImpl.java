@@ -11,6 +11,7 @@ public class ModelImpl implements Model{
 
     private final Connection connection;
     private Client actualClient;
+    private Admin actualAdmin;
 
     public ModelImpl(Connection connection) {
         Objects.requireNonNull(connection, "Model created with null connection");
@@ -45,5 +46,32 @@ public class ModelImpl implements Model{
     @Override
     public List<Pair<String, Integer>> getMostOrderedDishes() {
         return Order.DAO.getMostOrderedDishes(this.connection);
+    }
+
+    @Override
+    public boolean adminAccess(String code, String password) {
+        actualAdmin = Admin.DAO.getAdmin(this.connection, code, password);
+        return actualAdmin != null;
+    }
+
+    @Override
+    public float getAverageOrderPrice() {
+        return Order.DAO.getAveragePrice(this.connection);
+    }
+
+    @Override
+    public Pair<Integer, Integer> getOrdersNumberByHour() {
+        return new Pair<>(Order.DAO.getOrdersLunch(this.connection),
+                Order.DAO.getOrdersDinner(this.connection));
+    }
+
+    @Override
+    public boolean addPoints(int cardNumber, int points) {
+        try {
+            FidelityCard.DAO.addPointsToCard(this.connection,cardNumber,points);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 }

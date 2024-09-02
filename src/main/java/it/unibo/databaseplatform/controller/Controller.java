@@ -22,4 +22,12 @@ public interface Controller {
                           final String phoneNumber, final String email, final String password);
 
     List<Pair<String, Integer>> mostOrderedDishes();
+
+    boolean adminAccess(final String adminCode, final String password);
+
+    float getAveragePrice();
+
+    Pair<Integer, Integer> getOrdersByHour();
+
+    boolean addPoints(final int cardNumber, final int points);
 }

@@ -108,4 +108,39 @@ public class Queries {
             group by p.CodicePiatto, p.NomePiatto
             order by sum(ip.Quantità) desc
             """;
+
+    public static final String GET_ADMIN =
+            """
+            select *
+            from amministratori a
+            where a.CodiceAmministratore = ?
+            and a.Password = ?
+            """;
+
+    public static final String AVG_PRICE =
+            """
+            select avg(o.PrezzoTotale) as PrezzoMedio
+            from ordini o
+            """;
+
+    public static final String ORDERS_LUNCH =
+            """
+            select count(*) as NumeroOrdini
+            from ordini o
+            where o.Orario between '11:00:00' and '15:00:00'
+            """;
+
+    public static final String ORDERS_DINNER =
+            """
+            select count(*) as NumeroOrdini
+            from ordini o
+            where o.Orario between '18:00:00' and '23:00:00'
+            """;
+
+    public static final String ADD_POINTS_TO_CARD =
+            """
+            update carte_fedelta
+            set PuntiFedeltà = PuntiFedeltà + ?
+            where NumeroCarta = ?
+            """;
 }

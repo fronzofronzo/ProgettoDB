@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="formatWindow" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.databaseplatform.controllerFX.AdminViewFXController">
+   <children>
+      <Label layoutX="24.0" layoutY="14.0" styleClass="header" text="AMMINISTRATORE" />
+      <VBox layoutX="24.0" layoutY="75.0" prefHeight="367.0" prefWidth="612.0" spacing="15.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#showOrdersStats" styleClass="normal" text="Visualizza statistiche ordini" />
+            <Button mnemonicParsing="false" styleClass="normal" text="Aggiungi punti fedeltà ad un cliente" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
