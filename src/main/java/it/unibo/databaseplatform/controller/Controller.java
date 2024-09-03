@@ -30,4 +30,8 @@ public interface Controller {
     Pair<Integer, Integer> getOrdersByHour();
 
     boolean addPoints(final int cardNumber, final int points);
+
+    List<Pair<String,Float>> getMostReviewedDishes();
+
+    List<Pair<String,String>> getDishesToReview();
 }

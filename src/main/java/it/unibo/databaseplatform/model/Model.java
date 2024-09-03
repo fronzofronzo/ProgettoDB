@@ -36,4 +36,17 @@ public interface Model {
     Pair<Integer, Integer> getOrdersNumberByHour();
 
     boolean addPoints(final int cardNumber, final int points);
+
+    /**
+     * Gets dishes ordered by the ratings of the reviews
+     * @return {@link List} of {@link Pair} containing name of dish and
+     * the relative average rating.
+     */
+    List<Pair<String,Float>> getMostReviewedDishes();
+
+    /**
+     * Gets dishes that the client can review.
+     * @return {@link List} of {@link Pair} containing code and name of dishes.
+     */
+    List<Pair<String,String>> getDishesToReview();
 }

@@ -71,5 +71,15 @@ public class ControllerImpl implements Controller{
         return this.model.addPoints(cardNumber, points);
     }
 
+    @Override
+    public List<Pair<String, Float>> getMostReviewedDishes() {
+        return this.model.getMostReviewedDishes();
+    }
+
+    @Override
+    public List<Pair<String, String>> getDishesToReview() {
+        return this.model.getDishesToReview();
+    }
+
 
 }

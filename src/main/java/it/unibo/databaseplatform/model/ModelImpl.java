@@ -74,4 +74,25 @@ public class ModelImpl implements Model{
         }
         return true;
     }
+
+    /**
+     * Gets dishes ordered by the ratings of the reviews
+     *
+     * @return {@link List} of {@link Pair} containing name of dish and
+     * the relative average rating.
+     */
+    @Override
+    public List<Pair<String, Float>> getMostReviewedDishes() {
+        return Review.DAO.getMostReviewed(this.connection);
+    }
+
+    /**
+     * Gets dishes that the client can review.
+     *
+     * @return {@link List} of {@link Pair} containing code and name of dishes.
+     */
+    @Override
+    public List<Pair<String, String>> getDishesToReview() {
+        return Review.DAO.getDishesToReview(this.connection, actualClient.getClientCode());
+    }
 }

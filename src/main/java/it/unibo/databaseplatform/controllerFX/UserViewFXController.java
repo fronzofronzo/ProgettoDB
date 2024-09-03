@@ -45,4 +45,22 @@ public class UserViewFXController implements  FXController{
             throw new RuntimeException(e);
         }
     }
+
+    @FXML
+    public void showMostReviewedDishes() {
+        try {
+            this.view.setScene("reviews-view");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    public void reviewDish() {
+        try {
+            this.view.setScene("review-dish");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

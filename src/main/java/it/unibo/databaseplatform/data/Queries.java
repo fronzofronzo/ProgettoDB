@@ -143,4 +143,26 @@ public class Queries {
             set PuntiFedeltà = PuntiFedeltà + ?
             where NumeroCarta = ?
             """;
+
+    public static final String GET_MOST_REVIEWED =
+            """
+            select p.NomePiatto, avg(r.Voto) as VotoMedio
+            from piatti p, recensioni r
+            where p.CodicePiatto = r.CodicePiatto
+            group by p.CodicePiatto, p.NomePiatto
+            order by avg(r.Voto) desc
+            """;
+
+    public static final String GET_DISHES_TO_REVIEW =
+            """
+                    select distinct p.CodicePiatto, p.NomePiatto
+                                from include_piatti ip, ordini o, piatti p
+                                where o.CodiceCliente = ?
+                                and ip.CodiceOrdine = o.CodiceOrdine
+                                and p.CodicePiatto = ip.CodicePiatto
+                                and not exists ( select *
+                                                from recensioni r
+                                                where r.CodicePiatto = p.CodicePiatto )
+            """;
+
 }
