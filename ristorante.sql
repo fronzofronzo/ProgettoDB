@@ -50,7 +50,7 @@ CREATE TABLE `amministratori` (
   `CodiceAmministratore` varchar(10) NOT NULL,
   `Nome` varchar(15) NOT NULL,
   `Cognome` varchar(25) NOT NULL,
-  `Telefono` int NOT NULL,
+  `Telefono` varchar(10) DEFAULT NULL,
   `Email` varchar(100) NOT NULL,
   `Password` varchar(20) NOT NULL,
   PRIMARY KEY (`CodiceAmministratore`)
@@ -63,7 +63,7 @@ CREATE TABLE `amministratori` (
 
 LOCK TABLES `amministratori` WRITE;
 /*!40000 ALTER TABLE `amministratori` DISABLE KEYS */;
-INSERT INTO `amministratori` VALUES ('CAM001','Giuseppe','Rossi',345678990,'giuseppe.rossi@gmail.com','sdujT679'),('CAM002','Gabriele','Bianchi',346789908,'gabriele.bianchi@gmail.com','hurT67l'),('CAM003','Paolo','Verdi',376479374,'paolo.verdi@gmail.com','Htyuedcs?8');
+INSERT INTO `amministratori` VALUES ('CAM001','Giuseppe','Rossi','345678990','giuseppe.rossi@gmail.com','sdujT679'),('CAM002','Gabriele','Bianchi','346789908','gabriele.bianchi@gmail.com','hurT67l'),('CAM003','Paolo','Verdi','376479374','paolo.verdi@gmail.com','Htyuedcs?8');
 /*!40000 ALTER TABLE `amministratori` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -282,6 +282,7 @@ CREATE TABLE `include_piatti` (
 
 LOCK TABLES `include_piatti` WRITE;
 /*!40000 ALTER TABLE `include_piatti` DISABLE KEYS */;
+INSERT INTO `include_piatti` VALUES ('O00002','PIA001',1),('O00001','PIA002',1),('O00001','PIA003',1),('O00005','PIA003',1),('O00002','PIA004',1),('O00004','PIA005',1),('O00003','PIA006',1),('O00004','PIA007',1),('O00005','PIA009',1);
 /*!40000 ALTER TABLE `include_piatti` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -435,8 +436,8 @@ DROP TABLE IF EXISTS `recensioni`;
 CREATE TABLE `recensioni` (
   `CodicePiatto` varchar(6) NOT NULL,
   `CodiceCliente` varchar(10) NOT NULL,
-  `Testo` char(1) NOT NULL,
-  `Voto` char(1) NOT NULL,
+  `Testo` varchar(100) DEFAULT NULL,
+  `Voto` int DEFAULT NULL,
   PRIMARY KEY (`CodicePiatto`,`CodiceCliente`),
   KEY `FKREC_CLI` (`CodiceCliente`),
   CONSTRAINT `FKREC_CLI` FOREIGN KEY (`CodiceCliente`) REFERENCES `clienti` (`CodiceCliente`),
@@ -450,6 +451,7 @@ CREATE TABLE `recensioni` (
 
 LOCK TABLES `recensioni` WRITE;
 /*!40000 ALTER TABLE `recensioni` DISABLE KEYS */;
+INSERT INTO `recensioni` VALUES ('PIA001','CLI004','Molto buono',4),('PIA002','CLI001','Eccellente',5),('PIA004','CLI004','Niente di speciale',3);
 /*!40000 ALTER TABLE `recensioni` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -522,4 +524,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-01  9:56:44
+-- Dump completed on 2024-09-03 11:50:53
