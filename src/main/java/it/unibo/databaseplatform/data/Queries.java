@@ -165,4 +165,10 @@ public class Queries {
                                                 where r.CodicePiatto = p.CodicePiatto )
             """;
 
+    public static final String SAVE_REVIEW =
+            """
+            insert into recensioni
+            values ( ?, ? ,? ,?)
+            """;
+
 }

@@ -3,39 +3,53 @@ package it.unibo.databaseplatform.controllerFX;
 import it.unibo.databaseplatform.view.View;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextArea;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.IOException;
 
 public class ReviewDishFXController implements FXController{
 
+    private static final int MAX_LEN = 100;
     private View view;
+    private String dishCode;
     @FXML
-    private GridPane dishesPane;
-    private Map<Button,String> buttonDishes = new HashMap<>();
+    private ChoiceBox<Integer> ratingBox;
+    @FXML
+    private TextArea textBox;
+    @FXML
+    private Button saveReview;
+
 
     @Override
     public void setView(View view) {
         this.view = view;
-        final var dishesList = this.view.getController().getDishesToReview();
-        dishesPane.add(new Label("Nome Piatto"),0,0);
-        dishesPane.add(new Label(""),1,0);
-        for(int i = 0; i < dishesList.size(); i++) {
-            final var dish = dishesList.get(i);
-            final var nameLabel = new Label(dish.getY());
-            final var button = new Button("Recensisci");
-            buttonDishes.put(button, dish.getX());
-            /**
-             * add button event handler
-             */
-            dishesPane.add(nameLabel, 0, i+1);
-            dishesPane.add(button, 1, i+1);
-        }
+        ratingBox.getItems().addAll(1,2,3,4,5);
+        saveReview.setOnAction(e -> {
+            var text = this.textBox.getText();
+            if(text.length() > MAX_LEN) {
+                text = text.substring(0, MAX_LEN);
+            }
+            final var rating = ratingBox.getValue();
+            if(text.isEmpty() || rating == null) {
+                this.textBox.setText("Recensione non valida");
+            } else {
+                this.view.getController().saveReview(dishCode, text, rating);
+                ((Button)e.getSource()).setDisable(true);
+            }
+        });
     }
 
+    public void setDishToReview(final String code) {
+        this.dishCode = code;
+    }
 
-
-
+    @FXML
+    public void back() {
+        try {
+            this.view.setScene("review-dish");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

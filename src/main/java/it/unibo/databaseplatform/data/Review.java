@@ -11,9 +11,9 @@ public class Review {
     private final String dishCode;
     private final String clientCode;
     private final String text;
-    private final String rating;
+    private final int rating;
 
-    public Review(final String dishCode, final String clientCode, final String text, final String rating) {
+    public Review(final String dishCode, final String clientCode, final String text, final int rating) {
         this.dishCode = dishCode;
         this.clientCode = clientCode;
         this.text = text;
@@ -33,7 +33,7 @@ public class Review {
         return this.text;
     }
 
-    public String getRating() {
+    public int getRating() {
         return this.rating;
     }
 
@@ -68,6 +68,18 @@ public class Review {
                     listDishes.add(pair);
                 }
                 return listDishes;
+            } catch (Exception e) {
+                throw new DAOException(e);
+            }
+        }
+
+        public static void saveReview(final Connection connection,
+                                      final String clientCode, final String dishCode,
+                                      final String text, final int rating) {
+            try{
+                final var statement = DAOUtils.prepare(connection,Queries.SAVE_REVIEW, dishCode,
+                        clientCode, text, rating);
+                statement.execute();
             } catch (Exception e) {
                 throw new DAOException(e);
             }

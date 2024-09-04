@@ -34,4 +34,6 @@ public interface Controller {
     List<Pair<String,Float>> getMostReviewedDishes();
 
     List<Pair<String,String>> getDishesToReview();
+
+    void saveReview(final String dishCode, final String text, final int rating);
 }

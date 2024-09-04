@@ -81,5 +81,10 @@ public class ControllerImpl implements Controller{
         return this.model.getDishesToReview();
     }
 
+    @Override
+    public void saveReview(String dishCode, String text, int rating) {
+        this.model.saveReview(dishCode, text, rating);
+    }
+
 
 }

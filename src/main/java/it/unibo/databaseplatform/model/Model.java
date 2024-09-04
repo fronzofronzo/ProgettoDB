@@ -49,4 +49,6 @@ public interface Model {
      * @return {@link List} of {@link Pair} containing code and name of dishes.
      */
     List<Pair<String,String>> getDishesToReview();
+
+    void saveReview(final String dishCode, final String text, final int rating);
 }

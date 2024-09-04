@@ -95,4 +95,10 @@ public class ModelImpl implements Model{
     public List<Pair<String, String>> getDishesToReview() {
         return Review.DAO.getDishesToReview(this.connection, actualClient.getClientCode());
     }
+
+    @Override
+    public void saveReview(String dishCode, String text, int rating) {
+        Review.DAO.saveReview(this.connection, this.actualClient.getClientCode(),
+                dishCode, text, rating);
+    }
 }
