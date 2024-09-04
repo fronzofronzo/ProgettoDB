@@ -1,9 +1,6 @@
 package it.unibo.databaseplatform.controller;
 
-import it.unibo.databaseplatform.data.Address;
-import it.unibo.databaseplatform.data.Beverage;
-import it.unibo.databaseplatform.data.Order;
-import it.unibo.databaseplatform.data.Piatto;
+import it.unibo.databaseplatform.data.*;
 import it.unibo.databaseplatform.model.Model;
 import it.unibo.databaseplatform.utilities.Pair;
 import it.unibo.databaseplatform.view.View;
@@ -84,6 +81,16 @@ public class ControllerImpl implements Controller{
     @Override
     public void saveReview(String dishCode, String text, int rating) {
         this.model.saveReview(dishCode, text, rating);
+    }
+
+    @Override
+    public List<OrderInformation> getOrdersByClient() {
+        return this.model.getOrdersInformationByClient();
+    }
+
+    @Override
+    public List<Pair<String, Integer>> getDishesInOrder(String orderCode) {
+        return this.model.getDishesInOrder(orderCode);
     }
 
 

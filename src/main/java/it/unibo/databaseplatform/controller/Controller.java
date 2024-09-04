@@ -1,9 +1,6 @@
 package it.unibo.databaseplatform.controller;
 
-import it.unibo.databaseplatform.data.Address;
-import it.unibo.databaseplatform.data.Beverage;
-import it.unibo.databaseplatform.data.Order;
-import it.unibo.databaseplatform.data.Piatto;
+import it.unibo.databaseplatform.data.*;
 import it.unibo.databaseplatform.utilities.Pair;
 
 import java.util.List;
@@ -36,4 +33,8 @@ public interface Controller {
     List<Pair<String,String>> getDishesToReview();
 
     void saveReview(final String dishCode, final String text, final int rating);
+
+    List<OrderInformation> getOrdersByClient();
+
+    List<Pair<String,Integer>> getDishesInOrder(final String orderCode);
 }

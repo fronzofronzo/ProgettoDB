@@ -171,4 +171,18 @@ public class Queries {
             values ( ?, ? ,? ,?)
             """;
 
+    public static final String GET_ORDERS_FROM_CLIENT =
+            """
+            select o.CodiceOrdine, o.CodiceSconto, o.PrezzoTotale, o.Orario, o.Data
+            from ordini o
+            where o.CodiceCliente = ?
+            """;
+
+    public static final String GET_DISHES_FROM_ORDER =
+            """
+            select p.NomePiatto, ip.Quantità
+            from include_piatti ip, piatti p
+            where ip.CodiceOrdine = ?
+            and p.CodicePiatto = ip.CodicePiatto
+            """;
 }

@@ -63,4 +63,13 @@ public class UserViewFXController implements  FXController{
             throw new RuntimeException(e);
         }
     }
+
+    @FXML
+    public void showOrdersInformation() {
+        try {
+            this.view.setScene("orders-information");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

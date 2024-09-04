@@ -101,4 +101,15 @@ public class ModelImpl implements Model{
         Review.DAO.saveReview(this.connection, this.actualClient.getClientCode(),
                 dishCode, text, rating);
     }
+
+    @Override
+    public List<OrderInformation> getOrdersInformationByClient() {
+        final var clientCode = actualClient.getClientCode();
+        return OrderInformation.DAO.getOrdersFromClient(this.connection, clientCode);
+    }
+
+    @Override
+    public List<Pair<String, Integer>> getDishesInOrder(final String orderCode) {
+        return OrderInformation.DAO.getDishesFromOrder(this.connection, orderCode);
+    }
 }

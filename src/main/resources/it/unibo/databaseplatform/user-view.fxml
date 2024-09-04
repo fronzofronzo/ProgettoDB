@@ -15,6 +15,7 @@
             <Button fx:id="mostOrderedButton" mnemonicParsing="false" onAction="#showMostOrderedDishes" styleClass="normal" text="Visualizza piatti più ordinati" />
             <Button mnemonicParsing="false" onAction="#showMostReviewedDishes" styleClass="normal" text="Visualizza piatti con recensioni migliori" />
             <Button mnemonicParsing="false" onAction="#reviewDish" styleClass="normal" text="Recensisci piatto" />
+            <Button mnemonicParsing="false" onAction="#showOrdersInformation" styleClass="normal" text="Visualizza ordini effettuati" />
          </children>
       </VBox>
    </children>
