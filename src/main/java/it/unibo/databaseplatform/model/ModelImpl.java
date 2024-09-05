@@ -117,4 +117,9 @@ public class ModelImpl implements Model{
     public List<Pair<String, Integer>> getBeveragesFromOrder(String orderCode) {
         return OrderInformation.DAO.getBeveragesFromOrder(this.connection, orderCode);
     }
+
+    @Override
+    public FidelityCard getCardOfClient() {
+        return FidelityCard.DAO.getFidelityCard(this.connection, actualClient.getClientCode());
+    }
 }

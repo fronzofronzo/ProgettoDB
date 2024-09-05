@@ -98,5 +98,10 @@ public class ControllerImpl implements Controller{
         return this.model.getBeveragesFromOrder(orderCode);
     }
 
+    @Override
+    public FidelityCard getFidelityCardOfClient() {
+        return this.model.getCardOfClient();
+    }
+
 
 }

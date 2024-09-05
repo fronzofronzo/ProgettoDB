@@ -12,6 +12,10 @@ public class FidelityCard {
         this.cardNumber = cardNumber;
     }
 
+    public void setCardPoints(final int points) {
+        this.points = points;
+    }
+
     public int getCardNumber() {
         return cardNumber;
     }
@@ -35,6 +39,22 @@ public class FidelityCard {
             try{
                 final var statement = DAOUtils.prepare(connection, Queries.ADD_POINTS_TO_CARD, points, cardNumber);
                 statement.execute();
+            } catch (Exception e) {
+                throw new DAOException(e);
+            }
+        }
+
+        public static FidelityCard getFidelityCard(final Connection connection, final String clientCode) {
+            try(
+                    final var statement = DAOUtils.prepare(connection, Queries.GET_CARD_INFORMATION, clientCode);
+                    final var resultSet = statement.executeQuery();
+                    ){
+                resultSet.next();
+                final var cardNumber = resultSet.getInt(1);
+                final var cardPoints = resultSet.getInt(2);
+                final var fidelityCard = new FidelityCard(cardNumber);
+                fidelityCard.setCardPoints(cardPoints);
+                return  fidelityCard;
             } catch (Exception e) {
                 throw new DAOException(e);
             }

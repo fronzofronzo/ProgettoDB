@@ -39,4 +39,6 @@ public interface Controller {
     List<Pair<String,Integer>> getDishesInOrder(final String orderCode);
 
     List<Pair<String, Integer>> getBeveragesFromOrder(final String orderCode);
+
+    FidelityCard getFidelityCardOfClient();
 }

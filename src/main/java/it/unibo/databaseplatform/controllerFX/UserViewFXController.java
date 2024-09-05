@@ -72,4 +72,13 @@ public class UserViewFXController implements  FXController{
             throw new RuntimeException(e);
         }
     }
+
+    @FXML
+    public void generateDiscountView() {
+        try {
+            this.view.setScene("generate-discount");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
