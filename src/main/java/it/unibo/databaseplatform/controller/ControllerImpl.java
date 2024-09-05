@@ -93,5 +93,10 @@ public class ControllerImpl implements Controller{
         return this.model.getDishesInOrder(orderCode);
     }
 
+    @Override
+    public List<Pair<String, Integer>> getBeveragesFromOrder(final String orderCode) {
+        return this.model.getBeveragesFromOrder(orderCode);
+    }
+
 
 }

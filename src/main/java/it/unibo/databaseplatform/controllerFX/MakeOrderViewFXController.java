@@ -119,6 +119,21 @@ public class MakeOrderViewFXController implements FXController{
             });
             centralPane.add(button, 2, i+1 );
         }
+        final var numDishes = this.order.getDishesInOrder().size();
+        for(int i = 0; i < this.order.getBeveragesInOrder().size() ; i++) {
+            var b = this.order.getBeveragesInOrder().get(i);
+            var nameLabel = new Label(b.getName());
+            centralPane.add((nameLabel), 0, i+1+numDishes);
+            var priceLabel = new Label(String.valueOf(b.getPrice()));
+            centralPane.add((priceLabel), 1, i+1+numDishes);
+            var button = new Button("Rimuovi");
+            selectBeverages.put(button, b);
+            button.setOnAction( e -> {
+                order.removeBeverageFromOrder(selectBeverages.get((Button)e.getSource()));
+                centralPane.getChildren().removeAll(nameLabel,priceLabel,button);
+            });
+            centralPane.add(button, 2, i+1+numDishes );
+        }
     }
 
     private void sendOrder() {

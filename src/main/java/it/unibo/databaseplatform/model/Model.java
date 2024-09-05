@@ -52,4 +52,6 @@ public interface Model {
     List<OrderInformation> getOrdersInformationByClient();
 
     List<Pair<String, Integer>> getDishesInOrder(final String orderCode);
+
+    List<Pair<String, Integer>> getBeveragesFromOrder(final String orderCode);
 }

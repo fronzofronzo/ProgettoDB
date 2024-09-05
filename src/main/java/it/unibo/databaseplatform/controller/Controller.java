@@ -37,4 +37,6 @@ public interface Controller {
     List<OrderInformation> getOrdersByClient();
 
     List<Pair<String,Integer>> getDishesInOrder(final String orderCode);
+
+    List<Pair<String, Integer>> getBeveragesFromOrder(final String orderCode);
 }

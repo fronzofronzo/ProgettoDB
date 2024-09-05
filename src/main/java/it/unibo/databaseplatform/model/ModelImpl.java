@@ -112,4 +112,9 @@ public class ModelImpl implements Model{
     public List<Pair<String, Integer>> getDishesInOrder(final String orderCode) {
         return OrderInformation.DAO.getDishesFromOrder(this.connection, orderCode);
     }
+
+    @Override
+    public List<Pair<String, Integer>> getBeveragesFromOrder(String orderCode) {
+        return OrderInformation.DAO.getBeveragesFromOrder(this.connection, orderCode);
+    }
 }

@@ -185,4 +185,20 @@ public class Queries {
             where ip.CodiceOrdine = ?
             and p.CodicePiatto = ip.CodicePiatto
             """;
+
+    public static final String GET_BEVERAGES_FROM_ORDER =
+            """
+            select b.Nome, ib.Quantità
+            from include_bevande ib, bevande b
+            where ib.CodiceOrdine = ?
+            and b.CodiceBevanda = ib.CodiceBevanda
+            """;
+
+    public static final String GET_CARD_INFORMATION =
+            """
+            select cf.NumeroCarta, cf.PuntiFedeltà
+            from carte_fedelta cf, clienti c
+            where c.CodiceCliente = ?
+            and c.NumeroCarta = cf.NumeroCarta
+            """;
 }

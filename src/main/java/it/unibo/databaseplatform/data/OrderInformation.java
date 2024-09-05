@@ -2,9 +2,7 @@ package it.unibo.databaseplatform.data;
 
 import it.unibo.databaseplatform.utilities.Pair;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.Time;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,17 +72,33 @@ public class OrderInformation {
                     final var statement = DAOUtils.prepare(connection, Queries.GET_DISHES_FROM_ORDER, orderCode);
                     final var resultSet = statement.executeQuery();
                     ){
-                final List<Pair<String, Integer>> dishesList = new ArrayList<>();
-                while(resultSet.next()) {
-                    final var name = resultSet.getString(1);
-                    final var qta = resultSet.getInt(2);
-                    final var informationPair = new Pair<>(name, qta);
-                    dishesList.add(informationPair);
-                }
-                return List.copyOf(dishesList);
+                return getListFromResult(resultSet);
             } catch (Exception e) {
                 throw new DAOException(e);
             }
+        }
+
+        public static List<Pair<String, Integer>> getBeveragesFromOrder(final Connection connection,
+                                                                        final String orderCode) {
+            try(
+                    final var statement = DAOUtils.prepare(connection, Queries.GET_BEVERAGES_FROM_ORDER, orderCode);
+                    final var resultSet = statement.executeQuery();
+                    ) {
+                return getListFromResult(resultSet);
+            } catch (Exception e) {
+                throw new DAOException(e);
+            }
+        }
+
+        private static List<Pair<String, Integer>> getListFromResult(ResultSet resultSet) throws SQLException {
+            final List<Pair<String, Integer>> resultList = new ArrayList<>();
+            while(resultSet.next()) {
+                final var name = resultSet.getString(1);
+                final var qta = resultSet.getInt(2);
+                final var informationPair = new Pair<>(name, qta);
+                resultList.add(informationPair);
+            }
+            return resultList;
         }
     }
 }

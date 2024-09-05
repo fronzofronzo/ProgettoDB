@@ -92,7 +92,7 @@ public class Order {
                             .filter(d -> d.getBeverageCode().equals(bev.getBeverageCode()))
                             .count();
                     try {
-                        final PreparedStatement statement1 = DAOUtils.prepare(connection, Queries.INSERT_DISHES_ORDER,
+                        final PreparedStatement statement1 = DAOUtils.prepare(connection, Queries.INSERT_BEVERAGES_ORDER,
                                 bev.getBeverageCode(), finalCode, count);
                         statement1.execute();
                     } catch (Exception e) {

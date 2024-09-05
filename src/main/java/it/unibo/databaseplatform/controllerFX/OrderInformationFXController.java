@@ -5,6 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 
+import java.io.IOException;
+import java.util.List;
+
 public class OrderInformationFXController implements FXController{
 
     private View view;
@@ -21,18 +24,36 @@ public class OrderInformationFXController implements FXController{
             final var orderCode = new TreeItem<>(order.getOrderCode());
             root.getChildren().add(orderCode);
             final var discountCode = order.getDiscountCode() == null ? "" : order.getDiscountCode();
-            final var discountItem = new TreeItem<>(discountCode);
-            final var price = new TreeItem<>(String.valueOf(order.getPrice()));
-            final var time = new TreeItem<>(order.getTime().toString());
-            final var date = new TreeItem<>(order.getDate().toString());
+            final var discountItem = new TreeItem<>("Codice sconto: " + discountCode);
+            final var price = new TreeItem<>("Prezzo totale: " + String.valueOf(order.getPrice()));
+            final var time = new TreeItem<>("Orario: " + order.getTime().toString());
+            final var date = new TreeItem<>("Data: " + order.getDate().toString());
             final var dishesItem = new TreeItem<>("Piatti");
-            orderCode.getChildren().addAll(discountItem, price, time, date, dishesItem);
+            final var beveragesItem = new TreeItem<>("Bevande");
+            orderCode.getChildren().addAll(List.of(discountItem, price, time, date, dishesItem, beveragesItem));
             final var dishes = this.view.getController().getDishesInOrder(order.getOrderCode());
             for(final var d : dishes) {
                 final var dishItem = new TreeItem<>(d.getX()
                         + " - " + String.valueOf(d.getY()) + " pezzi.");
                 dishesItem.getChildren().add(dishItem);
             }
+            final var beverages = this.view.getController().getBeveragesFromOrder(order.getOrderCode());
+            for(final var b : beverages) {
+                final var beverageItem = new TreeItem<>(b.getX()
+                        + "-"
+                        + String.valueOf(b.getY())
+                        + " pezzo/i");
+                beveragesItem.getChildren().add(beverageItem);
+            }
+        }
+    }
+
+    @FXML
+    public void backHome() {
+        try {
+            this.view.setScene("user-view");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
