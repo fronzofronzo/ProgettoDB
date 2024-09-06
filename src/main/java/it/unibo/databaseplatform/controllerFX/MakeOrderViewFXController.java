@@ -54,7 +54,7 @@ public class MakeOrderViewFXController implements FXController{
         for (int i = 0; i < this.dishes.size(); i++ ){
             var d = this.dishes.get(i);
             centralPane.add(new Label(d.getNomePiatto()), 0, i+1);
-            centralPane.add(new Label(String.valueOf(d.getPrezzoPorzione())), 1, i+1);
+            centralPane.add(new Label((String.valueOf(d.getPrezzoPorzione())) + " €"), 1, i+1);
             var button = new Button("Aggiungi");
             this.selectDishes.put(button, d);
             button.setOnAction( e -> {
@@ -67,7 +67,7 @@ public class MakeOrderViewFXController implements FXController{
         for (int i = 0; i < this.beverages.size() ; i++ ){
             var bev = this.beverages.get(i);
             centralPane.add(new Label(bev.getName()), 0, i +  this.dishes.size() + 1);
-            centralPane.add(new Label(String.valueOf(bev.getPrice())), 1, i+this.dishes.size() + 1);
+            centralPane.add(new Label( (String.valueOf(bev.getPrice())) + " €"), 1, i+this.dishes.size() + 1);
             var button = new Button("Aggiungi");
             this.selectBeverages.put(button, bev);
             button.setOnAction( e -> {

@@ -36,9 +36,9 @@ public class MenuViewFXController implements FXController{
             var dish = listDishes.get(i);
             var dishname = new TreeItem<>(dish.getNomePiatto());
             dishes.getChildren().add(dishname);
-            var price = new TreeItem<>("Prezzo = " + String.valueOf(dish.getPrezzoPorzione()) + " €");
-            var calories = new TreeItem<>("Calorie = " + String.valueOf(dish.getApportoCaloricoPorzione()));
-            var course = new TreeItem<>(dish.getPortata());
+            var price = new TreeItem<>("Prezzo: " + String.valueOf(dish.getPrezzoPorzione()) + " €");
+            var calories = new TreeItem<>("Calorie: " + String.valueOf(dish.getApportoCaloricoPorzione()));
+            var course = new TreeItem<>("Portata: " + dish.getPortata());
             var ingredients = new TreeItem<>("Ingredienti");
             dish.getIngredienti().forEach(ing -> ingredients.getChildren().add(new TreeItem<>(ing)));
             var allergens = new TreeItem<>("Allergeni");
