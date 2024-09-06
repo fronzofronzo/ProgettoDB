@@ -201,4 +201,16 @@ public class Queries {
             where c.CodiceCliente = ?
             and c.NumeroCarta = cf.NumeroCarta
             """;
+
+    public static final String GENERATE_DISCOUNT =
+            """
+            insert into sconti
+            values (?, ?, ?, ?)        
+            """;
+
+    public static final String GET_ALL_DISCOUNTS =
+            """
+            select s.CodiceSconto
+            from sconti s        
+            """;
 }

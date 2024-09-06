@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,19 +22,46 @@ public class GenerateDiscountFXController implements FXController{
     private Label cardLabel;
     @FXML
     private VBox buttonsBox;
+    @FXML
+    private Label textLabel;
     private View view;
     private FidelityCard card;
-    private final Map<Button, Pair<Integer,Integer>> discountValues = new HashMap<>();
+    private final Map<Button, Pair<Float,Integer>> discountValues = new HashMap<>();
 
     @Override
     public void setView(View view) {
         this.view = view;
-        this.card = this.view.getController().getFidelityCardOfClient();
+        final var controller = this.view.getController();
+        this.card = controller.getFidelityCardOfClient();
         this.cardLabel.setText("Carta numero: " + card.getCardNumber() + " - Punti: " + card.getPoints());
         for( int i = 1; i <= NUM_DISCOUNTS; i++) {
-            final var value = MULTIPLIER * i;
-            final var pointsRequired = value * COST_MULTIPLIER;
+            final Float value = (float)(MULTIPLIER * i);
+            final Integer pointsRequired = (int) (value * COST_MULTIPLIER);
+            final var informationPair = new Pair<>(value, pointsRequired);
+            final var button = new Button(value + " euro - " + pointsRequired + " punti");
+            discountValues.put(button, informationPair);
+            button.setOnAction( e -> {
+                final var b = (Button)e.getSource();
+                final var points = discountValues.get(b).getY();
+                final var val = discountValues.get(b).getX();
+                if(card.getPoints() < points) {
+                    textLabel.setText("Punti insufficienti!");
+                } else {
+                    controller.generateDiscount(val);
+                    controller.addPoints(card.getCardNumber(), -points);
+                    textLabel.setText("Buono generato correttamente!");
+                }
+            });
+            buttonsBox.getChildren().add(button);
+        }
+    }
 
+    @FXML
+    public void backHome() {
+        try {
+            this.view.setScene("user-view");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 

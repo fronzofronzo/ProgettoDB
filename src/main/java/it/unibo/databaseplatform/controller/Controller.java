@@ -41,4 +41,6 @@ public interface Controller {
     List<Pair<String, Integer>> getBeveragesFromOrder(final String orderCode);
 
     FidelityCard getFidelityCardOfClient();
+
+    void generateDiscount(final float value);
 }

@@ -122,4 +122,10 @@ public class ModelImpl implements Model{
     public FidelityCard getCardOfClient() {
         return FidelityCard.DAO.getFidelityCard(this.connection, actualClient.getClientCode());
     }
+
+    @Override
+    public void generateDiscount(final float value) {
+        final var discount = new Discount(null, value, false, actualClient.getCardNumber());
+        Discount.DAO.generateDiscount(this.connection, discount);
+    }
 }

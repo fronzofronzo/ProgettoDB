@@ -103,5 +103,10 @@ public class ControllerImpl implements Controller{
         return this.model.getCardOfClient();
     }
 
+    @Override
+    public void generateDiscount(float value) {
+        this.model.generateDiscount(value);
+    }
+
 
 }
