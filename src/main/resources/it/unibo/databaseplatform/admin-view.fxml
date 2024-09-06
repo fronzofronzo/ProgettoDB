@@ -5,7 +5,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="formatWindow" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.databaseplatform.controllerFX.AdminViewFXController">
    <children>
       <Label layoutX="24.0" layoutY="14.0" styleClass="header" text="AMMINISTRATORE" />
@@ -13,6 +12,7 @@
          <children>
             <Button mnemonicParsing="false" onAction="#showOrdersStats" styleClass="normal" text="Visualizza statistiche ordini" />
             <Button mnemonicParsing="false" onAction="#addPointsToCard" styleClass="normal" text="Aggiungi punti fedeltà ad un cliente" />
+            <Button mnemonicParsing="false" styleClass="normal" text="Registra ordine di fornitura" />
          </children>
       </VBox>
    </children>

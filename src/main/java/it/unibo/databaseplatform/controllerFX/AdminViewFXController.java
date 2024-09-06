@@ -31,4 +31,6 @@ public class AdminViewFXController implements FXController{
             throw new RuntimeException(e);
         }
     }
+
+
 }

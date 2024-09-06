@@ -213,4 +213,16 @@ public class Queries {
             select s.CodiceSconto
             from sconti s        
             """;
+
+    public static final String REGISTER_SUPPLY =
+            """
+            insert into rifornimenti
+            values (?, curdate(), ?, ?, ?, ?)      
+            """;
+
+    public static final String GET_ALL_SUPPLY_CODES =
+            """
+            select r.CodiceRifornimento
+            from rifornimenti r
+            """;
 }
