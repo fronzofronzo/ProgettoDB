@@ -35,7 +35,8 @@
       </VBox>
       <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="47.0" prefWidth="670.0">
          <children>
-            <Button mnemonicParsing="false" styleClass="normal" text="Scegli gli ingredienti" />
+            <Button fx:id="controlButton" mnemonicParsing="false" styleClass="normal" text="Scegli gli ingredienti" />
+            <Button mnemonicParsing="false" styleClass="normal" text="Home" />
          </children>
       </HBox>
    </children>
