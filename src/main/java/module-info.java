@@ -4,6 +4,7 @@ module it.unibo.databaseplatform {
 
     requires org.controlsfx.controls;
     requires java.sql;
+    requires java.desktop;
 
     opens it.unibo.databaseplatform to javafx.fxml;
     exports it.unibo.databaseplatform;

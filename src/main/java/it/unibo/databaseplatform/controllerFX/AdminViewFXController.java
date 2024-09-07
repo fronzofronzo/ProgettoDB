@@ -40,4 +40,13 @@ public class AdminViewFXController implements FXController{
             throw new RuntimeException(e);
         }
     }
+
+    @FXML
+    public void showSupplyIngredients() {
+        try {
+            this.view.setScene("view-supply-ingredients");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

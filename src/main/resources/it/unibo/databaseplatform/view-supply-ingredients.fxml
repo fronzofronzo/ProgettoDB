@@ -1,8 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="formatWindow" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.databaseplatform.ViewSupplyIngredients">
-
-</AnchorPane>
+<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="formatWindow" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.databaseplatform.controllerFX.ViewSupplyIngredientsFXController">
+   <children>
+      <VBox prefHeight="462.0" prefWidth="267.0" spacing="15.0">
+         <children>
+            <Label styleClass="normal" text="Ingrediente" />
+            <ChoiceBox fx:id="ingredientsCodeBox" prefHeight="25.0" prefWidth="213.0" />
+            <Button mnemonicParsing="false" styleClass="normal" text="Visualizza Ordini">
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+         <padding>
+            <Insets left="5.0" top="10.0" />
+         </padding>
+      </VBox>
+      <TreeView fx:id="ordersView" prefHeight="462.0" prefWidth="401.0" />
+   </children>
+</FlowPane>
