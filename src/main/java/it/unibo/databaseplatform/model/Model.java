@@ -68,4 +68,11 @@ public interface Model {
      * @return {@link List} containing VAT numbers;
      */
     List<String> getVatNumbers();
+
+    /**
+     * Get list of supply for a certain ingredient
+     * @param ingredientCode - ingredient object of the research
+     * @return {@link List} containing {@link Supply} set with the database parameters.
+     */
+    List<Supply> getSupplyByIngredient(final String ingredientCode);
 }

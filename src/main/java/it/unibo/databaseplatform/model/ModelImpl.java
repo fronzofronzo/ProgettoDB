@@ -150,4 +150,15 @@ public class ModelImpl implements Model{
     public List<String> getVatNumbers() {
         return Supplier.DAO.getVatNumbers(this.connection);
     }
+
+    /**
+     * Get list of supply for a certain ingredient
+     *
+     * @param ingredientCode - ingredient object of the research
+     * @return {@link List} containing {@link Supply} set with the database parameters.
+     */
+    @Override
+    public List<Supply> getSupplyByIngredient(final String ingredientCode) {
+        return Supply.DAO.getSupplyByIngredient(this.connection, ingredientCode);
+    }
 }
