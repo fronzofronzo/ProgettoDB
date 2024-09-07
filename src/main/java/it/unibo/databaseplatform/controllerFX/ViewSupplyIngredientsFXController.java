@@ -13,7 +13,7 @@ public class ViewSupplyIngredientsFXController implements FXController{
     private ChoiceBox<String> ingredientsCodeBox;
 
     @Override
-    public void setView(View view) {
+    public void setView(final View view) {
         this.view = view;
         final var controller = this.view.getController();
         final var ingredientsCodeList = controller.getIngredientsCode();
