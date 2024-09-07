@@ -17,6 +17,10 @@ public class ViewSupplyIngredientsFXController implements FXController{
         this.view = view;
         final var controller = this.view.getController();
         final var ingredientsCodeList = controller.getIngredientsCode();
-        ingredientsCodeBox.getItems().addAll(ingredientsCodeList)
+        ingredientsCodeBox.getItems().addAll(ingredientsCodeList);
+    }
+
+    private void updateSupplyView() {
+
     }
 }
