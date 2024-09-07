@@ -75,4 +75,6 @@ public interface Model {
      * @return {@link List} containing {@link Supply} set with the database parameters.
      */
     List<Supply> getSupplyByIngredient(final String ingredientCode);
+
+    List<Ingredient> getAllIngredients();
 }

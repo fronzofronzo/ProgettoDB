@@ -161,4 +161,9 @@ public class ModelImpl implements Model{
     public List<Supply> getSupplyByIngredient(final String ingredientCode) {
         return Supply.DAO.getSupplyByIngredient(this.connection, ingredientCode);
     }
+
+    @Override
+    public List<Ingredient> getAllIngredients() {
+        return Ingredient.DAO.getAllIngredients(this.connection);
+    }
 }

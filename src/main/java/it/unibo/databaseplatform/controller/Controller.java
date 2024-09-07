@@ -51,4 +51,6 @@ public interface Controller {
     List<String> getVatNumbers();
 
     List<Supply> getSuppliesByIngredient(String ingredientCode);
+
+    List<Ingredient> getAllIngredients();
 }

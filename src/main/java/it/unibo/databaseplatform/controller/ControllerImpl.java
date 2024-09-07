@@ -128,5 +128,10 @@ public class ControllerImpl implements Controller{
         return this.model.getSupplyByIngredient(ingredientCode);
     }
 
+    @Override
+    public List<Ingredient> getAllIngredients() {
+        return this.model.getAllIngredients();
+    }
+
 
 }
