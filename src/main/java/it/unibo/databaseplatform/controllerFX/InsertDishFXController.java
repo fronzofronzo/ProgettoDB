@@ -1,4 +1,12 @@
 package it.unibo.databaseplatform.controllerFX;
 
-public class InsertDishFXController {
+import it.unibo.databaseplatform.view.View;
+
+public class InsertDishFXController implements FXController{
+    private View view;
+
+    @Override
+    public void setView(View view) {
+        this.view = view;
+    }
 }
