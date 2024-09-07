@@ -31,7 +31,7 @@ public class MenuViewFXController implements FXController{
         var root = new TreeItem<>("Menu");
         var dishes = new TreeItem<>("Piatti");
         var beverages = new TreeItem<>("Bevande");
-        root.getChildren().addAll(dishes,beverages);
+        root.getChildren().addAll(List.of(dishes,beverages));
         menuTreeView.setRoot(root);
         for(int i = 0; i < listDishes.size(); i++) {
             var dish = listDishes.get(i);
@@ -52,7 +52,7 @@ public class MenuViewFXController implements FXController{
             var beverageName = new TreeItem<>(beverage.getName());
             var capacity = new TreeItem<>("Capacità = " + beverage.getCapacity());
             var price = new TreeItem<>("Prezzo = " + String.valueOf(beverage.getPrice()) + " €");
-            beverageName.getChildren().addAll(capacity,price);
+            beverageName.getChildren().addAll(List.of(capacity,price));
             beverages.getChildren().add(beverageName);
         }
     }

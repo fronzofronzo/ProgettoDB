@@ -128,4 +128,26 @@ public class ModelImpl implements Model{
         final var discount = new Discount(null, value, false, actualClient.getCardNumber());
         Discount.DAO.generateDiscount(this.connection, discount);
     }
+
+    @Override
+    public void registerSupply(int quantity, String ingredientCode, String vatNumber) {
+        final var supply = new Supply(null, null,quantity,
+                actualAdmin.getAdminCode(), ingredientCode, vatNumber);
+        Supply.DAO.registerSupply(this.connection, supply);
+    }
+
+    @Override
+    public List<String> getIngredientsCode() {
+        return Ingredient.DAO.getIngredientsCode(this.connection);
+    }
+
+    /**
+     * Gets list containing Vat Numbers of all suppliers.
+     *
+     * @return {@link List} containing VAT numbers;
+     */
+    @Override
+    public List<String> getVatNumbers() {
+        return Supplier.DAO.getVatNumbers(this.connection);
+    }
 }

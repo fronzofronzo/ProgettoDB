@@ -225,4 +225,16 @@ public class Queries {
             select r.CodiceRifornimento
             from rifornimenti r
             """;
+
+    public static final String GET_INGREDIENTS_CODE =
+            """
+            select i.CodiceIngrediente
+            from ingredienti i
+            """;
+
+    public static final String GET_VAT_NUMBERS =
+            """
+            select f.PartitaIVA
+            from fornitori f
+            """;
 }

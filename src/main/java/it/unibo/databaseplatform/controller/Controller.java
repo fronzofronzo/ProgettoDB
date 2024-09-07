@@ -43,4 +43,10 @@ public interface Controller {
     FidelityCard getFidelityCardOfClient();
 
     void generateDiscount(final float value);
+
+    void registerSupply(final int quantity, final String ingredientCode, final String vatNumber);
+
+    List<String> getIngredientsCode();
+
+    List<String> getVatNumbers();
 }

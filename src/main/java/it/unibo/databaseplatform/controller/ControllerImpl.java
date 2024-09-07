@@ -108,5 +108,20 @@ public class ControllerImpl implements Controller{
         this.model.generateDiscount(value);
     }
 
+    @Override
+    public void registerSupply(int quantity, String ingredientCode, String vatNumber) {
+        this.model.registerSupply(quantity, ingredientCode, vatNumber);
+    }
+
+    @Override
+    public List<String> getIngredientsCode() {
+        return this.model.getIngredientsCode();
+    }
+
+    @Override
+    public List<String> getVatNumbers() {
+        return this.model.getVatNumbers();
+    }
+
 
 }

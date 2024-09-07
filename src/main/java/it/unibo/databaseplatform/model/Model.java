@@ -58,4 +58,14 @@ public interface Model {
     FidelityCard getCardOfClient();
 
     void generateDiscount(final float value);
+
+    void registerSupply(final int quantity, final String ingredientCode, final String vatNumber);
+
+    List<String> getIngredientsCode();
+
+    /**
+     * Gets list containing Vat Numbers of all suppliers.
+     * @return {@link List} containing VAT numbers;
+     */
+    List<String> getVatNumbers();
 }

@@ -12,7 +12,7 @@
          <children>
             <Button mnemonicParsing="false" onAction="#showOrdersStats" styleClass="normal" text="Visualizza statistiche ordini" />
             <Button mnemonicParsing="false" onAction="#addPointsToCard" styleClass="normal" text="Aggiungi punti fedeltà ad un cliente" />
-            <Button mnemonicParsing="false" styleClass="normal" text="Registra ordine di fornitura" />
+            <Button mnemonicParsing="false" onAction="#showRegisterSupplyScene" styleClass="normal" text="Registra ordine di fornitura" />
          </children>
       </VBox>
    </children>

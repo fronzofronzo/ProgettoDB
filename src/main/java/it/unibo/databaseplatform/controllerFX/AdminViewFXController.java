@@ -32,5 +32,12 @@ public class AdminViewFXController implements FXController{
         }
     }
 
-
+    @FXML
+    public void showRegisterSupplyScene() {
+        try {
+            this.view.setScene("register-supply");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
