@@ -55,4 +55,8 @@ public interface Controller {
     List<Ingredient> getAllIngredients();
 
     List<Allergen> getAllAllergens();
+
+    void registerDish(Dish dish);
+
+    List<Serving> getAllServings();
 }

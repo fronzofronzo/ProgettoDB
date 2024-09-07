@@ -1,5 +1,6 @@
 package it.unibo.databaseplatform.controllerFX;
 
+import it.unibo.databaseplatform.data.Dish;
 import it.unibo.databaseplatform.view.View;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,7 +11,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
-import java.beans.EventHandler;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +20,9 @@ public class InsertDishFXController implements FXController{
     @FXML
     private TextField dishNameField;
     @FXML
-    private Spinner<Float> priceSpinner;
+    private TextField priceField;
+    @FXML
+    private TextField caloriesField;
     @FXML
     private ChoiceBox<String> servingBox;
     @FXML
@@ -36,13 +38,18 @@ public class InsertDishFXController implements FXController{
     private final Map<CheckBox, String> allergensSelection = new HashMap<>();
 
     @Override
-    public void setView(View view) {
+    public void setView(final View view) {
         this.view = view;
         this.controlButton.setOnAction(this::chooseIngredients);
+        final var servings = this.view.getController().getAllServings();
+        for (var serving : servings) {
+            servingBox.getItems().add(serving.getServingCode() + " - " + serving.getName());
+        }
     }
 
     @FXML
     private void chooseIngredients(ActionEvent event) {
+        this.saveParameters();
         final var button = (Button)event.getSource();
         button.setText("Scegli gli allergeni");
         button.setOnAction(this::chooseAllergens);
@@ -91,7 +98,25 @@ public class InsertDishFXController implements FXController{
     }
 
     private void saveDish(final ActionEvent event) {
+        final var dish = new Dish(null, dishName,price, calories, serving);
+        for (var entry : ingredientsSelection.entrySet()) {
+            if (entry.getKey().isSelected()) {
+                dish.addIngredient(entry.getValue());
+            }
+        }
+        for (var entry : allergensSelection.entrySet()) {
+            if (entry.getKey().isSelected()) {
+                dish.addAllergen(entry.getValue());
+            }
+        }
+        this.view.getController().registerDish(dish);
+    }
 
+    private void saveParameters() {
+        this.dishName = dishNameField.getText();
+        this.price = Float.valueOf(priceField.getText());
+        this.calories = Integer.parseInt(caloriesField.getText());
+        this.serving = servingBox.getValue().substring(0,6);
     }
 
 }

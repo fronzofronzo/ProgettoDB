@@ -79,4 +79,8 @@ public interface Model {
     List<Ingredient> getAllIngredients();
 
     List<Allergen> getAllAllergens();
+
+    void insertDish(final Dish dish);
+
+    List<Serving> getAllServings();
 }

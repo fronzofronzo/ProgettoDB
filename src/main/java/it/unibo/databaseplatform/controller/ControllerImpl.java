@@ -138,5 +138,15 @@ public class ControllerImpl implements Controller{
         return this.model.getAllAllergens();
     }
 
+    @Override
+    public void registerDish(final Dish dish) {
+        this.model.insertDish(dish);
+    }
+
+    @Override
+    public List<Serving> getAllServings() {
+        return this.model.getAllServings();
+    }
+
 
 }

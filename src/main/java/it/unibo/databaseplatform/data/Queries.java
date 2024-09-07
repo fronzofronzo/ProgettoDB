@@ -261,7 +261,7 @@ public class Queries {
 
     public static final String INSERT_ALLERGENS_OF_DISH =
             """
-            insert into composizione_piatti 
+            insert into contiene_allergeni
             values(?,?)
             """;
 
@@ -274,6 +274,12 @@ public class Queries {
     public static final String GET_ALL_ALLERGENS =
             """
             select *
-            from allergeni 
+            from allergeni
+            """;
+
+    public static final String GET_ALL_SERVINGS =
+            """
+            select *
+            from portate
             """;
 }

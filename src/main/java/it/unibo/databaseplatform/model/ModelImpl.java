@@ -171,4 +171,14 @@ public class ModelImpl implements Model{
     public List<Allergen> getAllAllergens() {
         return Allergen.DAO.getAllAllergens(this.connection);
     }
+
+    @Override
+    public void insertDish(final Dish dish) {
+        Dish.DAO.registerDish(this.connection, dish);
+    }
+
+    @Override
+    public List<Serving> getAllServings() {
+        return Serving.DAO.getAllServings(this.connection);
+    }
 }

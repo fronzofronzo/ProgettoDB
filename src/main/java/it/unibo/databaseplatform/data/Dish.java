@@ -58,11 +58,11 @@ public class Dish {
         return ingredienti;
     }
 
-    private void addIngredient(String ing) {
+    public void addIngredient(String ing) {
         this.ingredienti.add(ing);
     }
 
-    private void addAllergen(String all) {
+    public void addAllergen(String all) {
         this.allergeni.add(all);
     }
 
@@ -137,6 +137,7 @@ public class Dish {
                 try {
                     final var statement = DAOUtils.prepare(connection, Queries.INSERT_ALLERGENS_OF_DISH,
                             allergen, dishCode);
+                    statement.execute();
                 } catch (Exception e) {
                     throw new DAOException(e);
                 }
@@ -145,7 +146,7 @@ public class Dish {
 
         private static String generateCode() {
             final var random = new Random();
-            return "ING" + String.valueOf(random.nextInt(NUM_BOUND));
+            return "PIA" + String.valueOf(random.nextInt(NUM_BOUND));
         }
     }
 }
