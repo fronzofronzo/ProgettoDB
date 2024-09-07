@@ -123,5 +123,10 @@ public class ControllerImpl implements Controller{
         return this.model.getVatNumbers();
     }
 
+    @Override
+    public List<Supply> getSuppliesByIngredient(final String ingredientCode) {
+        return this.model.getSupplyByIngredient(ingredientCode);
+    }
+
 
 }

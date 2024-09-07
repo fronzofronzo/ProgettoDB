@@ -1,6 +1,7 @@
 package it.unibo.databaseplatform.controller;
 
 import it.unibo.databaseplatform.data.*;
+import it.unibo.databaseplatform.model.Model;
 import it.unibo.databaseplatform.utilities.Pair;
 
 import java.util.List;
@@ -49,4 +50,6 @@ public interface Controller {
     List<String> getIngredientsCode();
 
     List<String> getVatNumbers();
+
+    List<Supply> getSuppliesByIngredient(String ingredientCode);
 }
