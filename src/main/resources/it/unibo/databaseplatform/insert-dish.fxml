@@ -11,10 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="formatWindow" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="formatWindow" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.databaseplatform.controllerFX.InsertDishFXController">
    <children>
-      <VBox alignment="CENTER_LEFT" prefHeight="413.0" prefWidth="650.0" spacing="10.0">
+      <VBox fx:id="centralBox" alignment="CENTER_LEFT" prefHeight="413.0" prefWidth="650.0" spacing="10.0">
          <children>
             <Label styleClass="normal" text="Nome piatto" />
             <TextField fx:id="dishNameField" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="100.0">

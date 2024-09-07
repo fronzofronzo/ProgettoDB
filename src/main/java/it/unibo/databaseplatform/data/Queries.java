@@ -264,4 +264,10 @@ public class Queries {
             insert into composizione_piatti 
             values(?,?)
             """;
+
+    public static final String GET_ALL_INGREDIENTS =
+            """
+            SELECT *
+            from ingredienti
+            """;
 }
