@@ -20,6 +20,7 @@ public class ViewSupplyIngredientsFXController implements FXController{
         ingredientsCodeBox.getItems().addAll(ingredientsCodeList);
     }
 
+    @FXML
     private void updateSupplyView() {
 
     }

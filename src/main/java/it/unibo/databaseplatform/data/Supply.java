@@ -2,9 +2,7 @@ package it.unibo.databaseplatform.data;
 
 import java.sql.Connection;
 import java.sql.Date;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 public class Supply {
 
@@ -77,6 +75,28 @@ public class Supply {
                 final var statement = DAOUtils.prepare(connection, Queries.REGISTER_SUPPLY,
                         code, qta, admin, ingredientCode1, vat);
                 statement.execute();
+            } catch (Exception e) {
+                throw new DAOException(e);
+            }
+        }
+
+        public static List<Supply> getSupplyByIngredient(final Connection connection, final String ingredientCode ) {
+            try(
+                    final var statement = DAOUtils.prepare(connection, Queries.GET_SUPPLY_OF_INGREDIENT, ingredientCode);
+                    final var resultSet = statement.executeQuery();
+            ) {
+                 final List<Supply> supplyList = new ArrayList<>();
+                 while(resultSet.next()) {
+                     final var supplyCode = resultSet.getString(1);
+                     final var date = resultSet.getDate(2);
+                     final var quantity = resultSet.getInt(3);
+                     final var adminCode = resultSet.getString(4);
+                     final var ingredientName = resultSet.getString(5);
+                     final var companyName = resultSet.getString(6);
+                     final var supply = new Supply(supplyCode, date, quantity, adminCode, ingredientName, companyName);
+                     supplyList.add(supply);
+                 }
+                 return List.copyOf(supplyList);
             } catch (Exception e) {
                 throw new DAOException(e);
             }

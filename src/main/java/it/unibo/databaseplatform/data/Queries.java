@@ -237,4 +237,13 @@ public class Queries {
             select f.PartitaIVA
             from fornitori f
             """;
+
+    public static final String GET_SUPPLY_OF_INGREDIENT =
+            """
+            select r.CodiceRifornimento, r.Data, r.Quantità, r.CodiceAmministratore, i.Nome, f.RagioneSociale
+            from rifornimenti r, ingredienti i, fornitori f
+            where r.CodiceIngrediente = i.CodiceIngrediente
+            and f.PartitaIva = r.PartitaIva
+            and r.CodiceIngrediente = ?
+            """;
 }
