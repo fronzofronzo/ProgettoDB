@@ -2,7 +2,7 @@ package it.unibo.databaseplatform.controllerFX;
 
 import it.unibo.databaseplatform.data.Beverage;
 import it.unibo.databaseplatform.data.Order;
-import it.unibo.databaseplatform.data.Piatto;
+import it.unibo.databaseplatform.data.Dish;
 import it.unibo.databaseplatform.view.View;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -19,10 +19,10 @@ import java.util.Map;
 public class MakeOrderViewFXController implements FXController{
 
     private View view;
-    private final List<Piatto> dishes = new LinkedList<>();
+    private final List<Dish> dishes = new LinkedList<>();
     private final List<Beverage> beverages = new LinkedList<>();
     private final Order order = new Order();
-    private final Map<Button, Piatto> selectDishes = new HashMap<>();
+    private final Map<Button, Dish> selectDishes = new HashMap<>();
     private final Map<Button, Beverage> selectBeverages = new HashMap<>();
 
     @FXML
@@ -53,7 +53,7 @@ public class MakeOrderViewFXController implements FXController{
         centralPane.add(new Label(""), 2 , 0);
         for (int i = 0; i < this.dishes.size(); i++ ){
             var d = this.dishes.get(i);
-            centralPane.add(new Label(d.getNomePiatto()), 0, i+1);
+            centralPane.add(new Label(d.getDishName()), 0, i+1);
             centralPane.add(new Label((String.valueOf(d.getPrezzoPorzione())) + " €"), 1, i+1);
             var button = new Button("Aggiungi");
             this.selectDishes.put(button, d);
@@ -107,7 +107,7 @@ public class MakeOrderViewFXController implements FXController{
         centralPane.add(new Label(""), 2 , 0);
         for(int i = 0; i < this.order.getDishesInOrder().size(); i++) {
             var d = this.order.getDishesInOrder().get(i);
-            var nameLabel = new Label(d.getNomePiatto());
+            var nameLabel = new Label(d.getDishName());
             centralPane.add((nameLabel), 0, i+1);
             var priceLabel = new Label(String.valueOf(d.getPrezzoPorzione()));
             centralPane.add((priceLabel), 1, i+1);

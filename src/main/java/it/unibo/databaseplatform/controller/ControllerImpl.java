@@ -18,7 +18,7 @@ public class ControllerImpl implements Controller{
     }
 
     @Override
-    public List<Piatto> getDishesList() {
+    public List<Dish> getDishesList() {
         return this.model.getDishes();
     }
 

@@ -5,16 +5,15 @@ import it.unibo.databaseplatform.utilities.Pair;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.*;
 
 public class Order {
 
     private final static int BOUND = 99999;
-    private final List<Piatto> dishesOrdered = new LinkedList<>();
+    private final List<Dish> dishesOrdered = new LinkedList<>();
     private final List<Beverage> beveragesOrdered = new LinkedList<>();
 
-    public void addDishToOrder(final Piatto dish) {
+    public void addDishToOrder(final Dish dish) {
         dishesOrdered.add(dish);
     }
 
@@ -22,7 +21,7 @@ public class Order {
         beveragesOrdered.add(beverage);
     }
 
-    public List<Piatto> getDishesInOrder() {
+    public List<Dish> getDishesInOrder() {
         return List.copyOf(this.dishesOrdered);
     }
 
@@ -30,7 +29,7 @@ public class Order {
         return List.copyOf(this.beveragesOrdered);
     }
 
-    public void removeDishFromOrder(final Piatto dish) {
+    public void removeDishFromOrder(final Dish dish) {
         this.dishesOrdered.remove(dish);
     }
 
@@ -57,7 +56,7 @@ public class Order {
                 throw new DAOException(e);
             }
             var price = 0.0F;
-            price += order.dishesOrdered.stream().map(Piatto::getPrezzoPorzione).reduce(0.0F, Float::sum);
+            price += order.dishesOrdered.stream().map(Dish::getPrezzoPorzione).reduce(0.0F, Float::sum);
             price += order.beveragesOrdered.stream().map(Beverage::getPrice).reduce(0.0F, Float::sum);
             final var finalPrice = price;
             final var finalCode = orderCode;
@@ -71,14 +70,14 @@ public class Order {
             }
             final Set<String> alreadyPresent = new HashSet<>();
             for(var dish : order.dishesOrdered) {
-                if(!alreadyPresent.contains(dish.getCodicePiatto())) {
-                    alreadyPresent.add(dish.getCodicePiatto());
+                if(!alreadyPresent.contains(dish.getDishCode())) {
+                    alreadyPresent.add(dish.getDishCode());
                     var count = order.dishesOrdered.stream()
-                            .filter(d -> d.getCodicePiatto().equals(dish.getCodicePiatto()))
+                            .filter(d -> d.getDishCode().equals(dish.getDishCode()))
                             .count();
                     try {
                         final PreparedStatement statement1 = DAOUtils.prepare(connection, Queries.INSERT_DISHES_ORDER,
-                                finalCode, dish.getCodicePiatto(), count);
+                                finalCode, dish.getDishCode(), count);
                         statement1.execute();
                     } catch (Exception e) {
                         throw new DAOException(e);

@@ -18,8 +18,8 @@ public class ModelImpl implements Model{
         this.connection = connection;
     }
 
-    public List<Piatto> getDishes(){
-        return Piatto.DAO.getPiatti(this.connection);
+    public List<Dish> getDishes(){
+        return Dish.DAO.getPiatti(this.connection);
     }
 
     @Override

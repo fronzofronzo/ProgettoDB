@@ -7,7 +7,6 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.List;
 
 public class MenuViewFXController implements FXController{
@@ -35,7 +34,7 @@ public class MenuViewFXController implements FXController{
         menuTreeView.setRoot(root);
         for(int i = 0; i < listDishes.size(); i++) {
             var dish = listDishes.get(i);
-            var dishname = new TreeItem<>(dish.getNomePiatto());
+            var dishname = new TreeItem<>(dish.getDishName());
             dishes.getChildren().add(dishname);
             var price = new TreeItem<>("Prezzo: " + String.valueOf(dish.getPrezzoPorzione()) + " €");
             var calories = new TreeItem<>("Calorie: " + String.valueOf(dish.getApportoCaloricoPorzione()));

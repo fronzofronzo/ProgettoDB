@@ -37,7 +37,7 @@ public class ViewImpl implements View{
         var listDishes = this.controller.getDishesList();
         for(int i=0; i<listDishes.size(); i++){
             var dish = listDishes.get(i);
-            System.out.println(dish.getNomePiatto());
+            System.out.println(dish.getDishName());
         }
     }
 

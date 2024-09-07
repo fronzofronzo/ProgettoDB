@@ -246,4 +246,22 @@ public class Queries {
             and f.PartitaIva = r.PartitaIva
             and r.CodiceIngrediente = ?
             """;
+
+    public static final String INSERT_DISH =
+            """
+            insert into piatti
+            values (?,?,?,?,?)
+            """;
+
+    public static final String INSERT_INGREDIENT_OF_DISH =
+            """
+            insert into composizione_piatti 
+            values(?,?)
+            """;
+
+    public static final String INSERT_ALLERGENS_OF_DISH =
+            """
+            insert into composizione_piatti 
+            values(?,?)
+            """;
 }

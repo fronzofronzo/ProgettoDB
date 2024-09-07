@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="formatWindow" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="CENTER_LEFT" prefHeight="413.0" prefWidth="650.0" spacing="10.0">
+         <children>
+            <Label styleClass="normal" text="Nome piatto" />
+            <TextField fx:id="dishNameField" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="100.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Label styleClass="normal" text="Prezzo Porzione" />
+            <Spinner fx:id="priceSpinner" editable="true" prefHeight="25.0" prefWidth="179.0" />
+            <Label styleClass="normal" text="Calorie Porzione" />
+            <Spinner prefHeight="25.0" prefWidth="189.0" />
+            <Label styleClass="normal" text="Portata" />
+            <ChoiceBox fx:id="servingBox" prefWidth="150.0" />
+         </children>
+         <FlowPane.margin>
+            <Insets left="10.0" right="20.0" />
+         </FlowPane.margin>
+      </VBox>
+      <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="47.0" prefWidth="670.0">
+         <children>
+            <Button mnemonicParsing="false" styleClass="normal" text="Scegli gli ingredienti" />
+         </children>
+      </HBox>
+   </children>
+</FlowPane>

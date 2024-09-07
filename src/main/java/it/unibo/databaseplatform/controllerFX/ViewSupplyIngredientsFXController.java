@@ -7,6 +7,7 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 
 import java.awt.*;
+import java.io.IOException;
 import java.util.List;
 
 public class ViewSupplyIngredientsFXController implements FXController{
@@ -44,6 +45,15 @@ public class ViewSupplyIngredientsFXController implements FXController{
                 supplyItem.getChildren().addAll(List.of(dateItem, quantityItem, adminCodeItem,
                         ingredientItem, supplierCode));
             }
+        }
+    }
+
+    @FXML
+    private void backHome() {
+        try {
+            this.view.setScene("admin-view");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }
