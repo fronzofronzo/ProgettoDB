@@ -270,4 +270,10 @@ public class Queries {
             SELECT *
             from ingredienti
             """;
+
+    public static final String GET_ALL_ALLERGENS =
+            """
+            select *
+            from allergeni 
+            """;
 }

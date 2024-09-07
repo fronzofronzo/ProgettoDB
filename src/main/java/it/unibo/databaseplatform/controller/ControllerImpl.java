@@ -133,5 +133,10 @@ public class ControllerImpl implements Controller{
         return this.model.getAllIngredients();
     }
 
+    @Override
+    public List<Allergen> getAllAllergens() {
+        return this.model.getAllAllergens();
+    }
+
 
 }

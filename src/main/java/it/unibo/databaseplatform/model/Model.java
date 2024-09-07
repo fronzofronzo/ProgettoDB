@@ -77,4 +77,6 @@ public interface Model {
     List<Supply> getSupplyByIngredient(final String ingredientCode);
 
     List<Ingredient> getAllIngredients();
+
+    List<Allergen> getAllAllergens();
 }

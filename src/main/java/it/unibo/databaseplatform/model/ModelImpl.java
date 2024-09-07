@@ -166,4 +166,9 @@ public class ModelImpl implements Model{
     public List<Ingredient> getAllIngredients() {
         return Ingredient.DAO.getAllIngredients(this.connection);
     }
+
+    @Override
+    public List<Allergen> getAllAllergens() {
+        return Allergen.DAO.getAllAllergens(this.connection);
+    }
 }

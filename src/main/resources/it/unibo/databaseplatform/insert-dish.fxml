@@ -32,7 +32,7 @@
             <Insets left="10.0" right="20.0" />
          </FlowPane.margin>
       </VBox>
-      <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="47.0" prefWidth="670.0">
+      <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="47.0" prefWidth="670.0" spacing="10.0">
          <children>
             <Button fx:id="controlButton" mnemonicParsing="false" styleClass="normal" text="Scegli gli ingredienti" />
             <Button mnemonicParsing="false" styleClass="normal" text="Home" />

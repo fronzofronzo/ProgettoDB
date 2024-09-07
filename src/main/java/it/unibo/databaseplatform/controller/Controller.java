@@ -53,4 +53,6 @@ public interface Controller {
     List<Supply> getSuppliesByIngredient(String ingredientCode);
 
     List<Ingredient> getAllIngredients();
+
+    List<Allergen> getAllAllergens();
 }
