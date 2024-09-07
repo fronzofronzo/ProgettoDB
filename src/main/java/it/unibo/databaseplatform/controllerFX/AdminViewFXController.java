@@ -49,4 +49,13 @@ public class AdminViewFXController implements FXController{
             throw new RuntimeException(e);
         }
     }
+
+    @FXML
+    private void setInsertDishView() {
+        try {
+            this.view.setScene("insert-dish");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

@@ -14,6 +14,7 @@
             <Button mnemonicParsing="false" onAction="#addPointsToCard" styleClass="normal" text="Aggiungi punti fedeltà ad un cliente" />
             <Button mnemonicParsing="false" onAction="#showRegisterSupplyScene" styleClass="normal" text="Registra ordine di fornitura" />
             <Button mnemonicParsing="false" onAction="#showSupplyIngredients" styleClass="normal" text="Visualizza rifornimenti di un ingrediente" />
+            <Button mnemonicParsing="false" onAction="#setInsertDishView" styleClass="normal" text="Inserisci piatto nel menù" />
          </children>
       </VBox>
    </children>
