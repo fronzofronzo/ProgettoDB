@@ -85,4 +85,6 @@ public interface Model {
     List<Serving> getAllServings();
 
     void removeDish(String dishCode);
+
+    List<String> getAllDiscountsOfClient();
 }

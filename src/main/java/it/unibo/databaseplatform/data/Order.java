@@ -12,6 +12,7 @@ public class Order {
     private final static int BOUND = 99999;
     private final List<Dish> dishesOrdered = new LinkedList<>();
     private final List<Beverage> beveragesOrdered = new LinkedList<>();
+    private String discountCode;
 
     public void addDishToOrder(final Dish dish) {
         dishesOrdered.add(dish);
@@ -35,6 +36,14 @@ public class Order {
 
     public void removeBeverageFromOrder(final Beverage beverage) {
         this.beveragesOrdered.remove(beverage);
+    }
+
+    public void setDiscountCode(final String discountCode) {
+        this.discountCode = discountCode;
+    }
+
+    public String getDiscountCode() {
+        return discountCode;
     }
 
     public static final class DAO {

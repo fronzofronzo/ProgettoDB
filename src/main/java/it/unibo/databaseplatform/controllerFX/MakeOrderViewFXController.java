@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
@@ -104,6 +105,10 @@ public class MakeOrderViewFXController implements FXController{
             this.sendOrder();
         });
         buttonContainer.getChildren().add(makeOrderButton);
+        var choiceDiscount = new ChoiceBox<String>();
+        choiceDiscount.getItems().addAll(this.view.getController().getDiscountsOfClient());
+        choiceDiscount.getStyleClass().add("normal");
+        buttonContainer.getChildren().add(choiceDiscount);
         controlButton.setText("Aggiungi all'ordine");
         controlButton.setOnAction(event -> {
             this.initialize();

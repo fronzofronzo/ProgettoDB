@@ -1,9 +1,7 @@
 package it.unibo.databaseplatform.data;
 
 import java.sql.Connection;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 public class Discount {
 
@@ -61,6 +59,21 @@ public class Discount {
                 final var statement = DAOUtils.prepare(connection, Queries.GENERATE_DISCOUNT,
                         code,value,used,cardNumber);
                 statement.execute();
+            } catch (Exception e) {
+                throw new DAOException(e);
+            }
+        }
+
+        public static List<String> getDiscountsByClient(final Connection connection, final String clientCode) {
+            try(
+                    final var statement = DAOUtils.prepare(connection, Queries.GET_DISCOUNTS_OF_CLIENT, clientCode);
+                    final var resultSet = statement.executeQuery();
+            ) {
+                final List<String> discounts = new ArrayList<>();
+                while (resultSet.next()) {
+                    discounts.add(resultSet.getString(1));
+                }
+                return discounts;
             } catch (Exception e) {
                 throw new DAOException(e);
             }

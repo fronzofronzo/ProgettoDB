@@ -61,4 +61,6 @@ public interface Controller {
     List<Serving> getAllServings();
 
     void removeDish(String dishCode);
+
+    List<String> getDiscountsOfClient();
 }

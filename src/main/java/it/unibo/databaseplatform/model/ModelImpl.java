@@ -186,4 +186,9 @@ public class ModelImpl implements Model{
     public void removeDish(String dishCode) {
         Dish.DAO.removeDish(this.connection, dishCode);
     }
+
+    @Override
+    public List<String> getAllDiscountsOfClient() {
+        return Discount.DAO.getDiscountsByClient(this.connection, this.actualClient.getClientCode());
+    }
 }

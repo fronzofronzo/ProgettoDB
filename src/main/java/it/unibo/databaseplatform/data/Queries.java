@@ -305,4 +305,13 @@ public class Queries {
             where CodiceIngrediente = ?
             """;
 
+    public static final String GET_DISCOUNTS_OF_CLIENT =
+            """
+            select CodiceSconto
+            from sconti s, clienti c, carte_fedelta cf
+            where c.CodiceCliente = ?
+            and c.NumeroCarta = cf.NumeroCarta
+            and s.NumeroCarta = cf.NumeroCarta
+            """;
+
 }

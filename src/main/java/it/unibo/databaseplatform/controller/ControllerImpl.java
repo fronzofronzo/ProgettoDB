@@ -153,5 +153,10 @@ public class ControllerImpl implements Controller{
         this.model.removeDish(dishCode);
     }
 
+    @Override
+    public List<String> getDiscountsOfClient() {
+        return this.model.getAllDiscountsOfClient();
+    }
+
 
 }
