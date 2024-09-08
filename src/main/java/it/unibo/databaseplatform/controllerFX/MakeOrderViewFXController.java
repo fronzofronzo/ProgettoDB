@@ -5,8 +5,11 @@ import it.unibo.databaseplatform.data.Order;
 import it.unibo.databaseplatform.data.Dish;
 import it.unibo.databaseplatform.view.View;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
@@ -26,7 +29,7 @@ public class MakeOrderViewFXController implements FXController{
     private final Map<Button, Beverage> selectBeverages = new HashMap<>();
 
     @FXML
-    private GridPane centralPane;
+    private ListView<Node> centralListView;
 
     @FXML
     private Button controlButton;
@@ -44,17 +47,17 @@ public class MakeOrderViewFXController implements FXController{
 
     private void initialize() {
         this.controlButton.setText("Riepilogo");
-        this.centralPane.getChildren().removeAll(this.centralPane.getChildren());
+        centralListView.getItems().clear();
         this.controlButton.setOnAction( e -> {
             this.showOrderDetails();
         });
-        centralPane.add(new Label("Nome"), 0 , 0);
-        centralPane.add(new Label("Prezzo"), 1 , 0);
-        centralPane.add(new Label(""), 2 , 0);
         for (int i = 0; i < this.dishes.size(); i++ ){
             var d = this.dishes.get(i);
-            centralPane.add(new Label(d.getDishName()), 0, i+1);
-            centralPane.add(new Label((String.valueOf(d.getPrezzoPorzione())) + " €"), 1, i+1);
+            final HBox hbox = new HBox();
+            hbox.setSpacing(50);
+            hbox.setAlignment(Pos.CENTER);
+            hbox.getChildren().add(new Label(d.getDishName()));
+            hbox.getChildren().add(new Label((String.valueOf(d.getPrezzoPorzione())) + " €"));
             var button = new Button("Aggiungi");
             this.selectDishes.put(button, d);
             button.setOnAction( e -> {
@@ -62,12 +65,16 @@ public class MakeOrderViewFXController implements FXController{
                         this.selectDishes.get((Button)e.getSource())
                 );
             });
-            centralPane.add(button, 2, i+1);
+            hbox.getChildren().add(button);
+            centralListView.getItems().add(hbox);
         }
         for (int i = 0; i < this.beverages.size() ; i++ ){
             var bev = this.beverages.get(i);
-            centralPane.add(new Label(bev.getName()), 0, i +  this.dishes.size() + 1);
-            centralPane.add(new Label( (String.valueOf(bev.getPrice())) + " €"), 1, i+this.dishes.size() + 1);
+            final HBox hbox = new HBox();
+            hbox.setSpacing(50);
+            hbox.setAlignment(Pos.CENTER);
+            hbox.getChildren().add(new Label(bev.getName()));
+            hbox.getChildren().add(new Label( (String.valueOf(bev.getPrice())) + " €"));
             var button = new Button("Aggiungi");
             this.selectBeverages.put(button, bev);
             button.setOnAction( e -> {
@@ -75,7 +82,8 @@ public class MakeOrderViewFXController implements FXController{
                         this.selectBeverages.get((Button)e.getSource())
                 );
             });
-            centralPane.add(button, 2, i+this.dishes.size() + 1);
+            hbox.getChildren().add(button);
+            centralListView.getItems().add(hbox);
         }
     }
 
@@ -101,38 +109,43 @@ public class MakeOrderViewFXController implements FXController{
             this.initialize();
             buttonContainer.getChildren().remove(makeOrderButton);
         });
-        centralPane.getChildren().removeAll(centralPane.getChildren());
-        centralPane.add(new Label("Nome"), 0 , 0);
-        centralPane.add(new Label("Prezzo"), 1 , 0);
-        centralPane.add(new Label(""), 2 , 0);
+        centralListView.getItems().clear();
         for(int i = 0; i < this.order.getDishesInOrder().size(); i++) {
             var d = this.order.getDishesInOrder().get(i);
+            final HBox hbox = new HBox();
+            hbox.setSpacing(50);
+            hbox.setAlignment(Pos.CENTER);
             var nameLabel = new Label(d.getDishName());
-            centralPane.add((nameLabel), 0, i+1);
+            hbox.getChildren().add((nameLabel));
             var priceLabel = new Label(String.valueOf(d.getPrezzoPorzione()));
-            centralPane.add((priceLabel), 1, i+1);
+            hbox.getChildren().add((priceLabel));
             var button = new Button("Rimuovi");
             selectDishes.put(button, d);
             button.setOnAction( e -> {
                 order.removeDishFromOrder(selectDishes.get((Button)e.getSource()));
-                centralPane.getChildren().removeAll(nameLabel,priceLabel,button);
+                centralListView.getItems().remove(hbox);
             });
-            centralPane.add(button, 2, i+1 );
+            hbox.getChildren().add(button);
+            centralListView.getItems().add(hbox);
         }
         final var numDishes = this.order.getDishesInOrder().size();
         for(int i = 0; i < this.order.getBeveragesInOrder().size() ; i++) {
             var b = this.order.getBeveragesInOrder().get(i);
+            final HBox hbox = new HBox();
+            hbox.setSpacing(50);
+            hbox.setAlignment(Pos.CENTER);
             var nameLabel = new Label(b.getName());
-            centralPane.add((nameLabel), 0, i+1+numDishes);
+            hbox.getChildren().add((nameLabel));
             var priceLabel = new Label(String.valueOf(b.getPrice()));
-            centralPane.add((priceLabel), 1, i+1+numDishes);
+            hbox.getChildren().add((priceLabel));
             var button = new Button("Rimuovi");
             selectBeverages.put(button, b);
             button.setOnAction( e -> {
                 order.removeBeverageFromOrder(selectBeverages.get((Button)e.getSource()));
-                centralPane.getChildren().removeAll(nameLabel,priceLabel,button);
+                centralListView.getItems().remove(hbox);
             });
-            centralPane.add(button, 2, i+1+numDishes );
+            hbox.getChildren().add(button);
+            centralListView.getItems().add(hbox);
         }
     }
 
