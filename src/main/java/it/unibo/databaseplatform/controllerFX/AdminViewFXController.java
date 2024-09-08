@@ -58,4 +58,13 @@ public class AdminViewFXController implements FXController{
             throw new RuntimeException(e);
         }
     }
+
+    @FXML
+    private void setRemoveDishView() {
+        try {
+            this.view.setScene("remove-dish");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
