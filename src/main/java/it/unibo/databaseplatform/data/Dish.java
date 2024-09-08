@@ -145,7 +145,24 @@ public class Dish {
         }
 
         public static void removeDish(final Connection connection, final String dishCode) {
-
+            try{
+                final var statement = DAOUtils.prepare(connection, Queries.REMOVE_DISH_ALLERGENS, dishCode);
+                statement.execute();
+            } catch (Exception e) {
+                throw new DAOException(e);
+            }
+            try{
+                final var statement = DAOUtils.prepare(connection, Queries.REMOVE_DISH_INGREDIENTS, dishCode);
+                statement.execute();
+            } catch (Exception e) {
+                throw new DAOException(e);
+            }
+            try{
+                final var statement = DAOUtils.prepare(connection, Queries.REMOVE_DISH, dishCode);
+                statement.execute();
+            } catch (Exception e) {
+                throw new DAOException(e);
+            }
         }
 
         private static String generateCode() {
