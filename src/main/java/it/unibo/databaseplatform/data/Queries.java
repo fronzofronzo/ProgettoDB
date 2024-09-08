@@ -292,4 +292,9 @@ public class Queries {
             """
             delete from composizione_piatti where CodicePiatto = ?
             """;
+
+    public static final String REMOVE_DISH =
+            """
+            delete from piatti where CodicePiatto = ?
+            """;
 }
