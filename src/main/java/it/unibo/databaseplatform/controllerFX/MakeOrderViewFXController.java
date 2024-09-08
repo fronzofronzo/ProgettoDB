@@ -54,8 +54,8 @@ public class MakeOrderViewFXController implements FXController{
         for (int i = 0; i < this.dishes.size(); i++ ){
             var d = this.dishes.get(i);
             final HBox hbox = new HBox();
-            hbox.setSpacing(50);
-            hbox.setAlignment(Pos.CENTER);
+            hbox.setSpacing(100);
+            hbox.setAlignment(Pos.CENTER_LEFT);
             hbox.getChildren().add(new Label(d.getDishName()));
             hbox.getChildren().add(new Label((String.valueOf(d.getPrezzoPorzione())) + " €"));
             var button = new Button("Aggiungi");
@@ -71,8 +71,8 @@ public class MakeOrderViewFXController implements FXController{
         for (int i = 0; i < this.beverages.size() ; i++ ){
             var bev = this.beverages.get(i);
             final HBox hbox = new HBox();
-            hbox.setSpacing(50);
-            hbox.setAlignment(Pos.CENTER);
+            hbox.setSpacing(100);
+            hbox.setAlignment(Pos.CENTER_LEFT);
             hbox.getChildren().add(new Label(bev.getName()));
             hbox.getChildren().add(new Label( (String.valueOf(bev.getPrice())) + " €"));
             var button = new Button("Aggiungi");
@@ -113,8 +113,8 @@ public class MakeOrderViewFXController implements FXController{
         for(int i = 0; i < this.order.getDishesInOrder().size(); i++) {
             var d = this.order.getDishesInOrder().get(i);
             final HBox hbox = new HBox();
-            hbox.setSpacing(50);
-            hbox.setAlignment(Pos.CENTER);
+            hbox.setSpacing(100);
+            hbox.setAlignment(Pos.CENTER_LEFT);
             var nameLabel = new Label(d.getDishName());
             hbox.getChildren().add((nameLabel));
             var priceLabel = new Label(String.valueOf(d.getPrezzoPorzione()));
@@ -132,8 +132,8 @@ public class MakeOrderViewFXController implements FXController{
         for(int i = 0; i < this.order.getBeveragesInOrder().size() ; i++) {
             var b = this.order.getBeveragesInOrder().get(i);
             final HBox hbox = new HBox();
-            hbox.setSpacing(50);
-            hbox.setAlignment(Pos.CENTER);
+            hbox.setSpacing(100);
+            hbox.setAlignment(Pos.CENTER_LEFT);
             var nameLabel = new Label(b.getName());
             hbox.getChildren().add((nameLabel));
             var priceLabel = new Label(String.valueOf(b.getPrice()));

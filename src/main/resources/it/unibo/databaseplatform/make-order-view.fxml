@@ -10,7 +10,7 @@
    <children>
       <FlowPane prefHeight="594.0" prefWidth="870.0">
          <children>
-            <ListView fx:id="centralListView" prefHeight="541.0" prefWidth="869.0" />
+            <ListView fx:id="centralListView" prefHeight="541.0" prefWidth="869.0" styleClass="normal" />
             <HBox fx:id="buttonContainer" alignment="CENTER" prefHeight="54.0" prefWidth="871.0" stylesheets="@style.css">
                <children>
                   <Button fx:id="controlButton" mnemonicParsing="false" onAction="#showOrderDetails" styleClass="normal" stylesheets="@style.css" text="Riepilogo" textAlignment="CENTER" />
