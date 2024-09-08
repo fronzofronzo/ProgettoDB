@@ -30,7 +30,18 @@ public class RemoveDishFXController implements FXController{
         }
     }
 
+    @FXML
+    private void removeDish() {
+        if(this.dishChoiceBox.getValue() != null) {
+            final var dish = dishChoiceBox.getValue();
+            this.view.getController().removeDish(dish);
+            this.updateDishesList();
+        }
+    }
+
     private void updateDishesList() {
+        this.dishChoiceBox.getItems().clear();
+        this.dishListView.getItems().clear();
         final var dishList = this.view.getController().getDishesList();
         for (var dish : dishList) {
             final String dishDescription = dish.getDishCode() + " - " + dish.getDishName();

@@ -18,7 +18,7 @@
                <children>
                   <Label styleClass="normal" text="Seleziona piatto" />
                   <ChoiceBox fx:id="dishChoiceBox" prefWidth="150.0" />
-                  <Button mnemonicParsing="false" styleClass="normal" text="Elimina" />
+                  <Button mnemonicParsing="false" onAction="#removeDish" styleClass="normal" text="Elimina" />
                   <Button mnemonicParsing="false" onAction="#backHome" styleClass="normal" text="Home">
                      <VBox.margin>
                         <Insets top="50.0" />
