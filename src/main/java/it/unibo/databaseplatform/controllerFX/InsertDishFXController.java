@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -117,6 +118,15 @@ public class InsertDishFXController implements FXController{
         this.price = Float.valueOf(priceField.getText());
         this.calories = Integer.parseInt(caloriesField.getText());
         this.serving = servingBox.getValue().substring(0,6);
+    }
+
+    @FXML
+    private void backHome() {
+        try {
+            this.view.setScene("admin-view");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
