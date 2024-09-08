@@ -282,4 +282,9 @@ public class Queries {
             select *
             from portate
             """;
+
+    public static final String REMOVE_DISH_ALLERGENS =
+            """
+            delete from contiene_allergeni where CodicePiatto = ?
+            """;
 }

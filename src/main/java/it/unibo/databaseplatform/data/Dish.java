@@ -144,6 +144,10 @@ public class Dish {
             }
         }
 
+        public static void removeDish(final Connection connection, final String dishCode) {
+
+        }
+
         private static String generateCode() {
             final var random = new Random();
             return "PIA" + String.valueOf(random.nextInt(NUM_BOUND));

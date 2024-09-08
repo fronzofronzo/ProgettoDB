@@ -8,13 +8,14 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="formatWindow" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.databaseplatform.controllerFX.AdminViewFXController">
    <children>
       <Label layoutX="24.0" layoutY="14.0" styleClass="header" text="AMMINISTRATORE" />
-      <VBox layoutX="24.0" layoutY="75.0" prefHeight="367.0" prefWidth="612.0" spacing="15.0">
+      <VBox alignment="CENTER_LEFT" layoutX="24.0" layoutY="75.0" prefHeight="367.0" prefWidth="612.0" spacing="15.0">
          <children>
             <Button mnemonicParsing="false" onAction="#showOrdersStats" styleClass="normal" text="Visualizza statistiche ordini" />
             <Button mnemonicParsing="false" onAction="#addPointsToCard" styleClass="normal" text="Aggiungi punti fedeltà ad un cliente" />
             <Button mnemonicParsing="false" onAction="#showRegisterSupplyScene" styleClass="normal" text="Registra ordine di fornitura" />
             <Button mnemonicParsing="false" onAction="#showSupplyIngredients" styleClass="normal" text="Visualizza rifornimenti di un ingrediente" />
             <Button mnemonicParsing="false" onAction="#setInsertDishView" styleClass="normal" text="Inserisci piatto nel menù" />
+            <Button mnemonicParsing="false" styleClass="normal" text="Elimina piatto dal menù" />
          </children>
       </VBox>
    </children>
