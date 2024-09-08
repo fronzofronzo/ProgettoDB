@@ -83,4 +83,6 @@ public interface Model {
     void insertDish(final Dish dish);
 
     List<Serving> getAllServings();
+
+    void removeDish(String dishCode);
 }

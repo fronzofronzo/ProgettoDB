@@ -181,4 +181,9 @@ public class ModelImpl implements Model{
     public List<Serving> getAllServings() {
         return Serving.DAO.getAllServings(this.connection);
     }
+
+    @Override
+    public void removeDish(String dishCode) {
+        Dish.DAO.removeDish(this.connection, dishCode);
+    }
 }

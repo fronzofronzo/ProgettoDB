@@ -148,5 +148,10 @@ public class ControllerImpl implements Controller{
         return this.model.getAllServings();
     }
 
+    @Override
+    public void removeDish(final String dishCode) {
+        this.model.removeDish(dishCode);
+    }
+
 
 }

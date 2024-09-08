@@ -59,4 +59,6 @@ public interface Controller {
     void registerDish(Dish dish);
 
     List<Serving> getAllServings();
+
+    void removeDish(String dishCode);
 }
