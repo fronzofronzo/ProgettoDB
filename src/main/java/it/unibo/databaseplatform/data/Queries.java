@@ -297,4 +297,12 @@ public class Queries {
             """
             delete from piatti where CodicePiatto = ?
             """;
+
+    public static final String ADD_WAREHOUSE_INGREDIENT_ITEMS =
+            """
+            update ingredienti
+            set QuantitàMagazzino = QuantitàMagazzino + ?
+            where CodiceIngrediente = ?
+            """;
+
 }

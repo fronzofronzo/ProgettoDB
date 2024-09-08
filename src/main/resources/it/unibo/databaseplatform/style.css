@@ -9,6 +9,11 @@
     -fx-font-size: 14px;
 }
 
+.normal-header{
+    -fx-font-size: 14px;
+    -fx-font-style: bold;
+}
+
 .formatWindow{
     -fx-pref-height: 460;
     -fx-pref-width: 670;

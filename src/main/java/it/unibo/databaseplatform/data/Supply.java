@@ -75,6 +75,9 @@ public class Supply {
                 final var statement = DAOUtils.prepare(connection, Queries.REGISTER_SUPPLY,
                         code, qta, admin, ingredientCode1, vat);
                 statement.execute();
+                final var statement2 = DAOUtils.prepare(connection, Queries.ADD_WAREHOUSE_INGREDIENT_ITEMS
+                        , qta, ingredientCode1);
+                statement2.execute();
             } catch (Exception e) {
                 throw new DAOException(e);
             }
