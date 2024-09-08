@@ -5,11 +5,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="formatWindow" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.databaseplatform.controllerFX.ReviewsViewFXController">
    <children>
       <Label alignment="CENTER" layoutX="116.0" layoutY="14.0" styleClass="header" text="CLASSIFICA RECENSIONI" />
-      <VBox fx:id="leaderboardBox" alignment="CENTER" layoutX="5.0" layoutY="73.0" prefHeight="334.0" prefWidth="662.0" styleClass="normal" />
+      <VBox fx:id="leaderboardBox" alignment="CENTER" layoutX="5.0" layoutY="73.0" prefHeight="334.0" prefWidth="662.0" spacing="30.0" styleClass="normal" />
       <Button layoutX="310.0" layoutY="415.0" mnemonicParsing="false" onAction="#backHome" styleClass="normal" text="Home" />
    </children>
 </AnchorPane>
