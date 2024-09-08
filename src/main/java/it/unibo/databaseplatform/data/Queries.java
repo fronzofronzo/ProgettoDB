@@ -287,4 +287,9 @@ public class Queries {
             """
             delete from contiene_allergeni where CodicePiatto = ?
             """;
+
+    public static final String REMOVE_DISH_INGREDIENTS =
+            """
+            delete from composizione_piatti where CodicePiatto = ?
+            """;
 }
