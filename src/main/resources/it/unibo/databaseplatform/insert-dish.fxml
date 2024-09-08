@@ -34,7 +34,7 @@
       <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="47.0" prefWidth="670.0" spacing="10.0">
          <children>
             <Button fx:id="controlButton" mnemonicParsing="false" styleClass="normal" text="Scegli gli ingredienti" />
-            <Button mnemonicParsing="false" styleClass="normal" text="Home" />
+            <Button mnemonicParsing="false" onAction="#backHome" styleClass="normal" text="Home" />
          </children>
       </HBox>
    </children>

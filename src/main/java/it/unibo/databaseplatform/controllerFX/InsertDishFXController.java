@@ -111,6 +111,7 @@ public class InsertDishFXController implements FXController{
             }
         }
         this.view.getController().registerDish(dish);
+        this.backHome();
     }
 
     private void saveParameters() {
