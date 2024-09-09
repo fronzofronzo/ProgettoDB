@@ -48,7 +48,7 @@ public class Queries {
     public static final String INSERT_ORDER =
             """
             insert into ordini
-            values ( ?, NULL, ?, CURTIME(), CURDATE(), ?)
+            values ( ?, ?, ?, CURTIME(), CURDATE(), ?)
             """;
 
     public static final String INSERT_DISHES_ORDER =
@@ -307,11 +307,19 @@ public class Queries {
 
     public static final String GET_DISCOUNTS_OF_CLIENT =
             """
-            select CodiceSconto
+            select CodiceSconto, s.Valore
             from sconti s, clienti c, carte_fedelta cf
             where c.CodiceCliente = ?
             and c.NumeroCarta = cf.NumeroCarta
             and s.NumeroCarta = cf.NumeroCarta
+            and s.Usato = false
+            """;
+
+    public static final String USE_DISCOUNT =
+            """
+            update sconti
+            set Usato = true
+            where CodiceSconto = ?
             """;
 
 }

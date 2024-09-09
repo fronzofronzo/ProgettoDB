@@ -1,5 +1,7 @@
 package it.unibo.databaseplatform.data;
 
+import it.unibo.databaseplatform.utilities.Pair;
+
 import java.sql.Connection;
 import java.util.*;
 
@@ -64,14 +66,16 @@ public class Discount {
             }
         }
 
-        public static List<String> getDiscountsByClient(final Connection connection, final String clientCode) {
+        public static List<Pair<String, Float>> getDiscountsByClient(final Connection connection, final String clientCode) {
             try(
                     final var statement = DAOUtils.prepare(connection, Queries.GET_DISCOUNTS_OF_CLIENT, clientCode);
                     final var resultSet = statement.executeQuery();
             ) {
-                final List<String> discounts = new ArrayList<>();
+                final List<Pair<String, Float>> discounts = new ArrayList<>();
                 while (resultSet.next()) {
-                    discounts.add(resultSet.getString(1));
+                    final var discountPair = new Pair<>(resultSet.getString(1),
+                            resultSet.getFloat(2));
+                    discounts.add(discountPair);
                 }
                 return discounts;
             } catch (Exception e) {

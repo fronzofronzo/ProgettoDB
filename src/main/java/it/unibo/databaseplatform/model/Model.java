@@ -86,5 +86,5 @@ public interface Model {
 
     void removeDish(String dishCode);
 
-    List<String> getAllDiscountsOfClient();
+    List<Pair<String, Float>> getAllDiscountsOfClient();
 }

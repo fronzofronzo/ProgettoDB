@@ -62,5 +62,5 @@ public interface Controller {
 
     void removeDish(String dishCode);
 
-    List<String> getDiscountsOfClient();
+    List<Pair<String, Float>> getDiscountsOfClient();
 }

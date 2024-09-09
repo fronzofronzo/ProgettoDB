@@ -188,7 +188,7 @@ public class ModelImpl implements Model{
     }
 
     @Override
-    public List<String> getAllDiscountsOfClient() {
+    public List<Pair<String, Float>> getAllDiscountsOfClient() {
         return Discount.DAO.getDiscountsByClient(this.connection, this.actualClient.getClientCode());
     }
 }

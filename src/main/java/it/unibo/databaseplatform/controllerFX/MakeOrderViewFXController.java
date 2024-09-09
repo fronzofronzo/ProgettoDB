@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class MakeOrderViewFXController implements FXController{
 
@@ -38,6 +39,8 @@ public class MakeOrderViewFXController implements FXController{
     @FXML
     private HBox buttonContainer;
 
+    private ChoiceBox<String> choiceDiscount;
+
     @Override
     public void setView(final View view) {
         this.view = view;
@@ -54,11 +57,9 @@ public class MakeOrderViewFXController implements FXController{
         });
         for (int i = 0; i < this.dishes.size(); i++ ){
             var d = this.dishes.get(i);
-            final HBox hbox = new HBox();
-            hbox.setSpacing(100);
-            hbox.setAlignment(Pos.CENTER_LEFT);
-            hbox.getChildren().add(new Label(d.getDishName()));
-            hbox.getChildren().add(new Label((String.valueOf(d.getPrezzoPorzione())) + " €"));
+            final GridPane gridPane = new GridPane();
+            gridPane.add(new Label(d.getDishName()), 0, 0);
+            gridPane.add(new Label(("Prezzo: " + String.valueOf(d.getPrezzoPorzione())) + " €"),0, 1);
             var button = new Button("Aggiungi");
             this.selectDishes.put(button, d);
             button.setOnAction( e -> {
@@ -66,16 +67,14 @@ public class MakeOrderViewFXController implements FXController{
                         this.selectDishes.get((Button)e.getSource())
                 );
             });
-            hbox.getChildren().add(button);
-            centralListView.getItems().add(hbox);
+            gridPane.add(button, 0,2);
+            centralListView.getItems().add(gridPane);
         }
         for (int i = 0; i < this.beverages.size() ; i++ ){
             var bev = this.beverages.get(i);
-            final HBox hbox = new HBox();
-            hbox.setSpacing(100);
-            hbox.setAlignment(Pos.CENTER_LEFT);
-            hbox.getChildren().add(new Label(bev.getName()));
-            hbox.getChildren().add(new Label( (String.valueOf(bev.getPrice())) + " €"));
+            final GridPane gridPane = new GridPane();
+            gridPane.add(new Label(bev.getName()), 0, 0);
+            gridPane.add(new Label( (String.valueOf(bev.getPrice())) + " €"), 0, 1);
             var button = new Button("Aggiungi");
             this.selectBeverages.put(button, bev);
             button.setOnAction( e -> {
@@ -83,8 +82,8 @@ public class MakeOrderViewFXController implements FXController{
                         this.selectBeverages.get((Button)e.getSource())
                 );
             });
-            hbox.getChildren().add(button);
-            centralListView.getItems().add(hbox);
+            gridPane.add(button, 0, 2);
+            centralListView.getItems().add(gridPane);
         }
     }
 
@@ -105,8 +104,13 @@ public class MakeOrderViewFXController implements FXController{
             this.sendOrder();
         });
         buttonContainer.getChildren().add(makeOrderButton);
-        var choiceDiscount = new ChoiceBox<String>();
-        choiceDiscount.getItems().addAll(this.view.getController().getDiscountsOfClient());
+        choiceDiscount = new ChoiceBox<String>();
+        buttonContainer.getChildren().add(new Label("Codice Sconto: "));
+        choiceDiscount.getItems().addAll(this.view.getController()
+                .getDiscountsOfClient()
+                .stream()
+                .map(d -> d.getX() + " - " + String.valueOf(d.getY()))
+                .collect(Collectors.toSet()));
         choiceDiscount.getStyleClass().add("normal");
         buttonContainer.getChildren().add(choiceDiscount);
         controlButton.setText("Aggiungi all'ordine");
@@ -117,45 +121,60 @@ public class MakeOrderViewFXController implements FXController{
         centralListView.getItems().clear();
         for(int i = 0; i < this.order.getDishesInOrder().size(); i++) {
             var d = this.order.getDishesInOrder().get(i);
-            final HBox hbox = new HBox();
-            hbox.setSpacing(100);
-            hbox.setAlignment(Pos.CENTER_LEFT);
+            final GridPane gridPane = new GridPane();
             var nameLabel = new Label(d.getDishName());
-            hbox.getChildren().add((nameLabel));
-            var priceLabel = new Label(String.valueOf(d.getPrezzoPorzione()));
-            hbox.getChildren().add((priceLabel));
+            gridPane.add((nameLabel), 0 ,0);
+            var priceLabel = new Label("Prezzo: " + String.valueOf(d.getPrezzoPorzione()) + " €");
+            gridPane.add((priceLabel),0,1);
             var button = new Button("Rimuovi");
             selectDishes.put(button, d);
             button.setOnAction( e -> {
                 order.removeDishFromOrder(selectDishes.get((Button)e.getSource()));
-                centralListView.getItems().remove(hbox);
+                centralListView.getItems().remove(gridPane);
             });
-            hbox.getChildren().add(button);
-            centralListView.getItems().add(hbox);
+            gridPane.add(button, 0,2);
+            centralListView.getItems().add(gridPane);
         }
         final var numDishes = this.order.getDishesInOrder().size();
         for(int i = 0; i < this.order.getBeveragesInOrder().size() ; i++) {
             var b = this.order.getBeveragesInOrder().get(i);
-            final HBox hbox = new HBox();
-            hbox.setSpacing(100);
-            hbox.setAlignment(Pos.CENTER_LEFT);
+            final GridPane gridPane = new GridPane();
             var nameLabel = new Label(b.getName());
-            hbox.getChildren().add((nameLabel));
-            var priceLabel = new Label(String.valueOf(b.getPrice()));
-            hbox.getChildren().add((priceLabel));
+            gridPane.add((nameLabel), 0,0);
+            var priceLabel = new Label("Prezzo: " + String.valueOf(b.getPrice()) + " €");
+            gridPane.add((priceLabel),0,1);
             var button = new Button("Rimuovi");
             selectBeverages.put(button, b);
             button.setOnAction( e -> {
                 order.removeBeverageFromOrder(selectBeverages.get((Button)e.getSource()));
-                centralListView.getItems().remove(hbox);
+                centralListView.getItems().remove(gridPane);
             });
-            hbox.getChildren().add(button);
-            centralListView.getItems().add(hbox);
+            gridPane.add(button,0,2);
+            centralListView.getItems().add(gridPane);
         }
     }
 
     private void sendOrder() {
+        final var discountCode = this.choiceDiscount.getValue() == null
+                ? null
+                : this.choiceDiscount.getValue().substring(0,6);
+        if (discountCode != null) {
+           final var value = this.view.getController().getDiscountsOfClient()
+                   .stream()
+                   .filter(p -> p.getX().equals(discountCode))
+                   .findFirst()
+                   .get()
+                   .getY();
+           this.order.setDiscountCode(discountCode, value);
+        } else {
+            this.order.setDiscountCode(null, null);
+        }
         this.view.getController().sendOrder(this.order);
+        try {
+            this.view.setScene("user-view");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

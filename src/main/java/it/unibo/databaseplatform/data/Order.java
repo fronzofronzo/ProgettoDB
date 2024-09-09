@@ -12,7 +12,7 @@ public class Order {
     private final static int BOUND = 99999;
     private final List<Dish> dishesOrdered = new LinkedList<>();
     private final List<Beverage> beveragesOrdered = new LinkedList<>();
-    private String discountCode;
+    private Pair<String, Float> discountCode;
 
     public void addDishToOrder(final Dish dish) {
         dishesOrdered.add(dish);
@@ -38,12 +38,16 @@ public class Order {
         this.beveragesOrdered.remove(beverage);
     }
 
-    public void setDiscountCode(final String discountCode) {
-        this.discountCode = discountCode;
+    public void setDiscountCode(final String discountCode, final Float discountValue) {
+        this.discountCode = new Pair<>(discountCode, discountValue);
     }
 
     public String getDiscountCode() {
-        return discountCode;
+        return discountCode.getX();
+    }
+
+    public Float getValue() {
+        return discountCode.getY();
     }
 
     public static final class DAO {
@@ -67,15 +71,27 @@ public class Order {
             var price = 0.0F;
             price += order.dishesOrdered.stream().map(Dish::getPrezzoPorzione).reduce(0.0F, Float::sum);
             price += order.beveragesOrdered.stream().map(Beverage::getPrice).reduce(0.0F, Float::sum);
+            if (order.getValue() != null) {
+                price -= order.getValue();
+            }
             final var finalPrice = price;
             final var finalCode = orderCode;
+            final var discountCode = order.getDiscountCode();
             final var clientCode = client.getClientCode();
             final PreparedStatement statement;
             try {
-                statement = DAOUtils.prepare(connection, Queries.INSERT_ORDER, finalCode, finalPrice, clientCode);
+                statement = DAOUtils.prepare(connection, Queries.INSERT_ORDER, finalCode, discountCode, finalPrice, clientCode);
                 statement.execute();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
+            }
+            if (discountCode != null) {
+                try{
+                    final var statement1 = DAOUtils.prepare(connection, Queries.USE_DISCOUNT, discountCode);
+                    statement1.execute();
+                } catch (Exception e) {
+                    throw new DAOException(e);
+                }
             }
             final Set<String> alreadyPresent = new HashSet<>();
             for(var dish : order.dishesOrdered) {

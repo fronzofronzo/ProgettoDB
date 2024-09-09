@@ -154,7 +154,7 @@ public class ControllerImpl implements Controller{
     }
 
     @Override
-    public List<String> getDiscountsOfClient() {
+    public List<Pair<String, Float>> getDiscountsOfClient() {
         return this.model.getAllDiscountsOfClient();
     }
 
