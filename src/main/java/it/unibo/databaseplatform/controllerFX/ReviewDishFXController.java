@@ -22,7 +22,7 @@ public class ReviewDishFXController implements FXController{
 
 
     @Override
-    public void setView(View view) {
+    public void setView(final View view) {
         this.view = view;
         ratingBox.getItems().addAll(1,2,3,4,5);
         saveReview.setOnAction(e -> {

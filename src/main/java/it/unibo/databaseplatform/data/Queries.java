@@ -156,13 +156,14 @@ public class Queries {
     public static final String GET_DISHES_TO_REVIEW =
             """
                     select distinct p.CodicePiatto, p.NomePiatto
-                                from include_piatti ip, ordini o, piatti p
-                                where o.CodiceCliente = ?
-                                and ip.CodiceOrdine = o.CodiceOrdine
-                                and p.CodicePiatto = ip.CodicePiatto
-                                and not exists ( select *
-                                                from recensioni r
-                                                where r.CodicePiatto = p.CodicePiatto )
+                    from include_piatti ip, ordini o, piatti p
+                    where o.CodiceCliente = ?
+                    and ip.CodiceOrdine = o.CodiceOrdine
+                    and p.CodicePiatto = ip.CodicePiatto
+                    and not exists ( select *
+                                     from recensioni r
+                                     where r.CodicePiatto = p.CodicePiatto
+                                     and r.CodiceCliente = ?)
             """;
 
     public static final String SAVE_REVIEW =

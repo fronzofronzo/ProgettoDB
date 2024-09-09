@@ -59,7 +59,8 @@ public class Review {
         public static List<Pair<String, String>> getDishesToReview(final Connection connection,
                                                                    final String clientCode) {
             try(
-                    final var statement = DAOUtils.prepare(connection, Queries.GET_DISHES_TO_REVIEW, clientCode);
+                    final var statement = DAOUtils.prepare(connection, Queries.GET_DISHES_TO_REVIEW,
+                            clientCode, clientCode);
                     final var resultSet = statement.executeQuery();
                     ){
                 final List<Pair<String, String>> listDishes = new ArrayList<>();
