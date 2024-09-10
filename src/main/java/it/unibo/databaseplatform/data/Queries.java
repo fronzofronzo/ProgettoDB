@@ -206,19 +206,19 @@ public class Queries {
     public static final String GENERATE_DISCOUNT =
             """
             insert into sconti
-            values (?, ?, ?, ?)        
+            values (?, ?, ?, ?)
             """;
 
     public static final String GET_ALL_DISCOUNTS =
             """
             select s.CodiceSconto
-            from sconti s        
+            from sconti s
             """;
 
     public static final String REGISTER_SUPPLY =
             """
             insert into rifornimenti
-            values (?, curdate(), ?, ?, ?, ?)      
+            values (?, curdate(), ?, ?, ?, ?)
             """;
 
     public static final String GET_ALL_SUPPLY_CODES =
