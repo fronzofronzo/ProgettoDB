@@ -80,7 +80,8 @@ public class Order {
             final var clientCode = client.getClientCode();
             final PreparedStatement statement;
             try {
-                statement = DAOUtils.prepare(connection, Queries.INSERT_ORDER, finalCode, discountCode, finalPrice, clientCode);
+                statement = DAOUtils.prepare(connection, Queries.INSERT_ORDER
+                        , finalCode, discountCode, finalPrice, clientCode);
                 statement.execute();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -109,7 +110,7 @@ public class Order {
                     }
                 }
             }
-            for(var bev : order.beveragesOrdered) {
+            for (var bev : order.beveragesOrdered) {
                 if(!alreadyPresent.contains(bev.getBeverageCode())) {
                     alreadyPresent.add(bev.getBeverageCode());
                     var count = order.beveragesOrdered.stream()
@@ -123,6 +124,13 @@ public class Order {
                         throw new DAOException(e);
                     }
                 }
+            }
+            try {
+                final var stt = DAOUtils.prepare(connection, Queries.ADD_POINTS_TO_CARD,
+                        finalPrice, client.getCardNumber());
+                stt.execute();
+            } catch (Exception e) {
+                throw new DAOException(e);
             }
         }
 

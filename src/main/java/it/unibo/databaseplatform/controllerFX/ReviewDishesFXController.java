@@ -2,9 +2,12 @@ package it.unibo.databaseplatform.controllerFX;
 
 import it.unibo.databaseplatform.view.View;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -12,21 +15,22 @@ import java.util.Map;
 
 public class ReviewDishesFXController implements FXController{
 
+
     private View view;
     @FXML
-    private GridPane dishesPane;
+    private ListView<Node> dishesList;
     private Map<Button,String> buttonDishes = new HashMap<>();
 
     @Override
     public void setView(View view) {
         this.view = view;
-        final var dishesList = this.view.getController().getDishesToReview();
-        dishesPane.add(new Label("Nome Piatto"),0,0);
-        dishesPane.add(new Label(""),1,0);
-        for(int i = 0; i < dishesList.size(); i++) {
-            final var dish = dishesList.get(i);
+        final var dishesToReview = this.view.getController().getDishesToReview();
+        for(int i = 0; i < dishesToReview.size(); i++) {
+            final var dish = dishesToReview.get(i);
             final var nameLabel = new Label(dish.getY());
             final var button = new Button("Recensisci");
+            final var hbox = new HBox(nameLabel, button);
+            hbox.setSpacing(15);
             buttonDishes.put(button, dish.getX());
             button.setOnAction( e -> {
                 final var d = buttonDishes.get((Button)e.getSource());
@@ -37,8 +41,7 @@ public class ReviewDishesFXController implements FXController{
                 }
                 ((ReviewDishFXController)this.view.getFXController()).setDishToReview(d);
             });
-            dishesPane.add(nameLabel, 0, i+1);
-            dishesPane.add(button, 1, i+1);
+            dishesList.getItems().add(hbox);
         }
     }
 
