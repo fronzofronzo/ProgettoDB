@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="459.0" prefWidth="671.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.databaseplatform.controllerFX.StartScreenFXController">
+<AnchorPane prefHeight="459.0" prefWidth="671.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.databaseplatform.controllerFX.StartScreenFXController">
    <children>
       <Label layoutX="112.0" layoutY="97.0" styleClass="header" stylesheets="@style.css" text="RISTORANTE DA ANDREA" textAlignment="CENTER">
          <font>

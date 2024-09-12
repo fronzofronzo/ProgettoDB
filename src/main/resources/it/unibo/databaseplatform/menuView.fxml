@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="formatWindow" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.databaseplatform.controllerFX.MenuViewFXController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="formatWindow" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unibo.databaseplatform.controllerFX.MenuViewFXController">
    <children>
       <TreeView fx:id="menuTreeView" layoutX="-2.0" prefHeight="412.0" prefWidth="676.0" styleClass="normal" stylesheets="@style.css" />
       <HBox alignment="CENTER" layoutX="-3.0" layoutY="409.0" prefHeight="53.0" prefWidth="676.0">
