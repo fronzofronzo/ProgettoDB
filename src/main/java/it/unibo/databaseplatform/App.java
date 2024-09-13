@@ -13,14 +13,24 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
         final View view = new ViewImpl(stage);
-        var connection = DAOUtils.localMySQLConnection("ristorante", "root", "miciaminu");
+        final Properties prop = new Properties();
+        try(InputStream input = getClass().getClassLoader().getResourceAsStream("database.properties")) {
+            prop.load(input);
+        }
+        final String url = prop.getProperty("database.url");
+        final String username = prop.getProperty("database.username");
+        final String password = prop.getProperty("database.password");
+        var connection = DAOUtils.localMySQLConnection(url, username, password);
         final Model model = new ModelImpl(connection);
         final Controller controller = new ControllerImpl(model, view);
         view.setController(controller);

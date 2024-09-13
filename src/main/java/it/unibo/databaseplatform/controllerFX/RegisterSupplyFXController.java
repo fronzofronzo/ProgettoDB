@@ -25,6 +25,7 @@ public class RegisterSupplyFXController implements FXController{
     @Override
     public void setView(View view) {
         this.view = view;
+        quantitySpinner.setEditable(true);
         controlsBox.getChildren().add(quantitySpinner);
         final var controller = this.view.getController();
         final var ingredientsList = controller.getIngredientsCode();
