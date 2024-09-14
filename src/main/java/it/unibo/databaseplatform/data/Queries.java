@@ -14,7 +14,7 @@ public class Queries {
             select *
             from clienti c
             where c.CodiceCliente = ?
-            and c.Password = ? 
+            and c.Password = ?
             """;
 
     public static final String INGREDIENT_DISH =
